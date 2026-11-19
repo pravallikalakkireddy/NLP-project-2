@@ -1,0 +1,6 @@
+.venv/
+data/
+__pycache__/
+.DS_Store
+p2/make_slides.py
+slides/*.pptx

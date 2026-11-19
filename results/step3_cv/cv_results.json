@@ -1,0 +1,152 @@
+[
+ {
+  "encoder": "glove200-meanmax",
+  "model": "mlp-adam_lr1e-4-weighted",
+  "system": "mlp-adam_lr1e-4-weighted | glove200-meanmax",
+  "seed": 0,
+  "fold": 0,
+  "macro_f1": 0.2039668746720301,
+  "accuracy": 0.21322222222222223,
+  "best_epoch": 19
+ },
+ {
+  "encoder": "glove200-meanmax",
+  "model": "mlp-adam_lr1e-4-weighted",
+  "system": "mlp-adam_lr1e-4-weighted | glove200-meanmax",
+  "seed": 0,
+  "fold": 1,
+  "macro_f1": 0.195903467359761,
+  "accuracy": 0.20877777777777778,
+  "best_epoch": 17
+ },
+ {
+  "encoder": "glove200-meanmax",
+  "model": "mlp-adam_lr1e-4-weighted",
+  "system": "mlp-adam_lr1e-4-weighted | glove200-meanmax",
+  "seed": 0,
+  "fold": 2,
+  "macro_f1": 0.19278888478324324,
+  "accuracy": 0.208,
+  "best_epoch": 13
+ },
+ {
+  "encoder": "glove200-meanmax",
+  "model": "mlp-adam_lr1e-4-weighted",
+  "system": "mlp-adam_lr1e-4-weighted | glove200-meanmax",
+  "seed": 0,
+  "fold": 3,
+  "macro_f1": 0.19793065232673596,
+  "accuracy": 0.21122222222222223,
+  "best_epoch": 19
+ },
+ {
+  "encoder": "glove200-meanmax",
+  "model": "mlp-adam_lr1e-4-weighted",
+  "system": "mlp-adam_lr1e-4-weighted | glove200-meanmax",
+  "seed": 0,
+  "fold": 4,
+  "macro_f1": 0.19872828517597257,
+  "accuracy": 0.2147777777777778,
+  "best_epoch": 12
+ },
+ {
+  "encoder": "glove200-meanmax",
+  "model": "mlp-adam_lr1e-4-weighted",
+  "system": "mlp-adam_lr1e-4-weighted | glove200-meanmax",
+  "seed": 1,
+  "fold": 0,
+  "macro_f1": 0.2055472210320402,
+  "accuracy": 0.22,
+  "best_epoch": 14
+ },
+ {
+  "encoder": "glove200-meanmax",
+  "model": "mlp-adam_lr1e-4-weighted",
+  "system": "mlp-adam_lr1e-4-weighted | glove200-meanmax",
+  "seed": 1,
+  "fold": 1,
+  "macro_f1": 0.1997833652698378,
+  "accuracy": 0.21,
+  "best_epoch": 18
+ },
+ {
+  "encoder": "glove200-meanmax",
+  "model": "mlp-adam_lr1e-4-weighted",
+  "system": "mlp-adam_lr1e-4-weighted | glove200-meanmax",
+  "seed": 1,
+  "fold": 2,
+  "macro_f1": 0.20102898404105657,
+  "accuracy": 0.21044444444444443,
+  "best_epoch": 28
+ },
+ {
+  "encoder": "glove200-meanmax",
+  "model": "mlp-adam_lr1e-4-weighted",
+  "system": "mlp-adam_lr1e-4-weighted | glove200-meanmax",
+  "seed": 1,
+  "fold": 3,
+  "macro_f1": 0.19959219450046098,
+  "accuracy": 0.21344444444444444,
+  "best_epoch": 18
+ },
+ {
+  "encoder": "glove200-meanmax",
+  "model": "mlp-adam_lr1e-4-weighted",
+  "system": "mlp-adam_lr1e-4-weighted | glove200-meanmax",
+  "seed": 1,
+  "fold": 4,
+  "macro_f1": 0.20183544907655698,
+  "accuracy": 0.20833333333333334,
+  "best_epoch": 26
+ },
+ {
+  "encoder": "glove200-meanmax",
+  "model": "mlp-adam_lr1e-4-weighted",
+  "system": "mlp-adam_lr1e-4-weighted | glove200-meanmax",
+  "seed": 2,
+  "fold": 0,
+  "macro_f1": 0.20233248700047507,
+  "accuracy": 0.21066666666666667,
+  "best_epoch": 22
+ },
+ {
+  "encoder": "glove200-meanmax",
+  "model": "mlp-adam_lr1e-4-weighted",
+  "system": "mlp-adam_lr1e-4-weighted | glove200-meanmax",
+  "seed": 2,
+  "fold": 1,
+  "macro_f1": 0.19691904912763883,
+  "accuracy": 0.21155555555555555,
+  "best_epoch": 20
+ },
+ {
+  "encoder": "glove200-meanmax",
+  "model": "mlp-adam_lr1e-4-weighted",
+  "system": "mlp-adam_lr1e-4-weighted | glove200-meanmax",
+  "seed": 2,
+  "fold": 2,
+  "macro_f1": 0.19122522745593,
+  "accuracy": 0.20977777777777779,
+  "best_epoch": 9
+ },
+ {
+  "encoder": "glove200-meanmax",
+  "model": "mlp-adam_lr1e-4-weighted",
+  "system": "mlp-adam_lr1e-4-weighted | glove200-meanmax",
+  "seed": 2,
+  "fold": 3,
+  "macro_f1": 0.20482169925643223,
+  "accuracy": 0.22088888888888888,
+  "best_epoch": 19
+ },
+ {
+  "encoder": "glove200-meanmax",
+  "model": "mlp-adam_lr1e-4-weighted",
+  "system": "mlp-adam_lr1e-4-weighted | glove200-meanmax",
+  "seed": 2,
+  "fold": 4,
+  "macro_f1": 0.1974269657264928,
+  "accuracy": 0.20822222222222223,
+  "best_epoch": 28
+ }
+]
