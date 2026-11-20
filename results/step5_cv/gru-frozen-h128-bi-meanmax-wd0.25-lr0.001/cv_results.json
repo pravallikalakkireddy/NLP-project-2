@@ -1,0 +1,167 @@
+[
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "best",
+  "seed": 0,
+  "fold": 0,
+  "macro_f1": 0.2191794153114907,
+  "accuracy": 0.21222222222222223,
+  "best_epoch": 6
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "best",
+  "seed": 0,
+  "fold": 1,
+  "macro_f1": 0.2165320201553511,
+  "accuracy": 0.22155555555555556,
+  "best_epoch": 5
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "best",
+  "seed": 0,
+  "fold": 2,
+  "macro_f1": 0.23362197438218626,
+  "accuracy": 0.2378888888888889,
+  "best_epoch": 6
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "best",
+  "seed": 0,
+  "fold": 3,
+  "macro_f1": 0.2177186277047726,
+  "accuracy": 0.23055555555555557,
+  "best_epoch": 3
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "best",
+  "seed": 0,
+  "fold": 4,
+  "macro_f1": 0.22220909819733475,
+  "accuracy": 0.22855555555555557,
+  "best_epoch": 11
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "best",
+  "seed": 1,
+  "fold": 0,
+  "macro_f1": 0.2344074394784339,
+  "accuracy": 0.23577777777777778,
+  "best_epoch": 8
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "best",
+  "seed": 1,
+  "fold": 1,
+  "macro_f1": 0.22755442623440697,
+  "accuracy": 0.2281111111111111,
+  "best_epoch": 6
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "best",
+  "seed": 1,
+  "fold": 2,
+  "macro_f1": 0.2260604585070217,
+  "accuracy": 0.22233333333333333,
+  "best_epoch": 8
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "best",
+  "seed": 1,
+  "fold": 3,
+  "macro_f1": 0.23508105350180966,
+  "accuracy": 0.23755555555555555,
+  "best_epoch": 9
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "best",
+  "seed": 1,
+  "fold": 4,
+  "macro_f1": 0.2229605141552537,
+  "accuracy": 0.2447777777777778,
+  "best_epoch": 7
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "best",
+  "seed": 2,
+  "fold": 0,
+  "macro_f1": 0.22144105470823533,
+  "accuracy": 0.21966666666666668,
+  "best_epoch": 9
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "best",
+  "seed": 2,
+  "fold": 1,
+  "macro_f1": 0.22224734640001692,
+  "accuracy": 0.22633333333333333,
+  "best_epoch": 13
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "best",
+  "seed": 2,
+  "fold": 2,
+  "macro_f1": 0.2176748294336562,
+  "accuracy": 0.22066666666666668,
+  "best_epoch": 5
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "best",
+  "seed": 2,
+  "fold": 3,
+  "macro_f1": 0.22909631614767045,
+  "accuracy": 0.23455555555555554,
+  "best_epoch": 5
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "best",
+  "seed": 2,
+  "fold": 4,
+  "macro_f1": 0.21811266432330517,
+  "accuracy": 0.22433333333333333,
+  "best_epoch": 7
+ }
+]

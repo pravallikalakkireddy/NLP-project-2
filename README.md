@@ -7,18 +7,18 @@ Same data handling too: the invisible `U+FE0F` leak is removed from all splits, 
 and we use **exactly the same 5 folds × 3 seeds** on the 45k training tweets.
 So every Project 2 score lines up with a Project 1 score for a paired comparison.
 
-This README is also the **handover**: what was done in steps 1–3, the results, and what is left (steps 4–6).
+This README documents all six steps: what we did, the results, and the answers to the course notebook's questions.
 
 | Step | Owner | Status |
 |---|---|---|
 | 1 Choose pretrained embeddings, check tokenisation and coverage | Pravallika | ✅ done |
 | 2 Explore what the embeddings capture | Pravallika | ✅ done |
 | 3 Embed-and-pool classifier, compare with best Project 1 model | Pravallika | ✅ done |
-| 4 GRU/LSTM, frozen vs trainable embeddings, data size | teammate | ⏳ to do |
-| 5 Hyperparameter search, seeds, variance, Bayesian ROPE | teammate | ⏳ to do |
-| 6 Error analysis | teammate | ⏳ to do |
+| 4 GRU/LSTM, frozen vs trainable embeddings, data size | Ana | ✅ done |
+| 5 Hyperparameter search, seeds, variance, Bayesian ROPE | Ana | ✅ done |
+| 6 Error analysis | Ana | ✅ done |
 | Slides 1–3 | Pravallika | ✅ `slides/project2_slides_1-3.pdf` |
-| Slides 4–6, merge into one PDF | together | ⏳ to do |
+| Slides 4–6, merge into one PDF | Ana | ✅ `slides/project2_slides.pdf` (all 6 slides) |
 
 **Deadline:** 27 Nov, 23:59. Slides PDF (max 6 slides, backup slides for the oral) + link to a public repo.
 
@@ -34,6 +34,8 @@ sh p2/download_embeddings.sh            # ~4.5 GB of word vectors into data/ (5-
 .venv/bin/python -m p2.step2_explore    # step 2, ~10 s
 .venv/bin/python -m p2.step3_pool sweep # step 3a, ~2 min
 .venv/bin/python -m p2.step3_pool cv    # step 3b, ~30 s
+sh p2/run_steps4-6.sh                   # steps 4-6, ~2 h on a laptop CPU (every phase resumes if stopped)
+.venv/bin/python -m p2.make_figures     # slide figures for steps 4-6, ~10 s
 ```
 
 Everything is deterministic: a full clean rerun gives identical numbers.
@@ -47,13 +49,27 @@ p2/
   step1_coverage.py      step 1: vocabulary coverage per embedding × tokenisation, most common missing words
   step2_explore.py       step 2: neighbours, emoji vectors, class centroids, limitations
   step3_pool.py          step 3: embed-and-pool classifier (sweep on validation, then 5 folds × 3 seeds + test)
+  step4_rnn.py           step 4: GRU / LSTM encoder (sweep on validation, data-size experiment)
+  step5_search.py        step 5: random search, 5 folds x 3 seeds for the final RNNs, Bayesian comparisons
+  step6_errors.py        step 6: tweet features, scores per feature bin, Bayesian correctness model, examples
+  make_figures.py        slide figures for steps 4-6
+  run_steps4-6.sh        runs steps 4-6 in order
   download_embeddings.sh downloads the word vectors
+part1/, part2/           the course's analysis.py files, unchanged (Bayesian t-test; Bayesian correctness model)
 results/
   step1_coverage.json    coverage numbers
   step2_explore.json     neighbours, similarities, centroid matrix
   step3_sweep.json       every sweep run (setting, seed, validation macro-F1 / accuracy)
   step3_cv/              final model: cv_results.json, test_summary.json, test predictions, per-tweet table
   p1_cv_results.json     Project 1's 12 systems × 15 CV scores (copied from the Project 1 repo, for step 5)
+  step4_sweep.json       step 4 sweep (every setting x seed: validation macro-F1, training curve)
+  step4_datasize.json    step 4 data size (10/30/100% of the training tweets)
+  step5_search.json      step 5 random search
+  step5_cv/<setting>/    final RNNs: cv_results.json, test_summary.json, ensemble test probabilities, per-tweet table
+  step5_compare.json     Bayesian comparisons (ROPE 0.5 / 1 / 2 points) and variance breakdown
+  step6_*.json           error analysis: binned scores, Bayesian model summary, per-emoji F1, examples
+  step6_features.csv.gz  the 10 analysis features + every system's prediction, one row per test tweet
+  p1_test_preds/         Project 1's BoW model test predictions (15 fold models), for step 6
   figures/               the charts used on the slides
 slides/
   project2_slides_1-3.pdf    slides 1-3
@@ -223,53 +239,157 @@ Same 5 folds × 3 seeds on the training tweets; each of the 15 fold models also 
 
 ---
 
-## What is saved for the teammate (steps 5 and 6)
+## Checklist: the course notebook's questions for steps 4–6
 
-All in `results/step3_cv/`:
+| Notebook asks | Answer | Where |
+|---|---|---|
+| 4. Which design choices matter? | Pretrained vectors (+4 over random), readout (mean+max over all states), GRU over LSTM; bidirectional and word dropout only help together | Step 4, slide 4 |
+| 4. Data size, embeddings trained or not, fixed or trainable? | 10/30/100% of the data × frozen / trainable / random: pretraining helps at every size, most at 10%; frozen ≥ trainable | Step 4, slide 4 |
+| 4. Did you struggle with over-fitting? | Trainable embeddings (8M extra parameters) peak earlier (epoch 3 vs 6) and score 1.2 lower; early stopping on 10% of the training data | Step 4 |
+| 4. How far can it go? Better than embed-and-pool? | Yes: +2.5 macro-F1 in CV (P = 0.999), test 23.9 vs 20.5 | Steps 4–5, slides 4–5 |
+| 5. How did you structure the hyperparameter search? | Coarse to fine: one factor at a time → random combinations of the competitive values → 5 folds × 3 seeds for the winner | Step 5, slide 5 |
+| 5. Are you keeping an eye on experimental variance? | 3 seeds for every setting (seed noise up to ±1 point), winner's curse checked by re-estimating, Bayesian ROPE on paired CV scores, seed vs fold variance | Step 5, slide 5 |
+| 6. Which analysis features? Which did you test, how did it go? | 10 features (length, unseen words, rare words, `@ Place`, hashtags, negation, sentiment, …), binned scores + the course's Bayesian correctness model | Step 6, slide 6 |
+| 6. What would you prioritise next? | Treat 📷/📸 and the heart colours as near-duplicates, contextual embeddings, split glued hashtags | Step 6, slide 6 |
 
-| File | What it is |
+## Step 4: recurrent encoder (GRU / LSTM)
+
+`tweet → GloVe tokens → word vectors → GRU or LSTM → readout → MLP → 20 emojis`
+
+Only the encoder changes compared with step 3: same tokeniser, same GloVe 200d, same MLP head (256, dropout 0.3),
+same class-weighted loss, same "best epoch on 10% of the training data". Plus gradient clipping (standard for RNNs).
+Vocabulary: every GloVe word that occurs in our tweets (41,832) + `<pad>` + `<unk>` (zero vectors; 4% of tokens).
+
+- **Embeddings:** *frozen* (GloVe, not updated), *trainable* (GloVe, fine-tuned) or *random* (same size, no pretraining).
+- **Readout** (how the per-word states become one tweet vector): `last` state, `max`, or `meanmax` over all states.
+- **Word dropout:** blank out random whole words while training (the course's `LSTMEncoder` regulariser).
+
+**4a. Sweep** (`step4_rnn.py sweep`, figure `results/figures/slide4_sweep.png`): change one factor of the default
+(GRU · frozen · 128 units · last state · no word dropout · Adam 1e-3), 3 seeds each, validation macro-F1 (%):
+
+| Factor | Results |
 |---|---|
-| `cv_results.json` | 15 rows (seed 0–2 × fold 0–4): `macro_f1`, `accuracy`, `best_epoch`. Same format and same folds as Project 1. |
-| `test_summary.json` | chosen setting, CV mean/sd, test scores (single models and ensemble) |
-| `test_preds/s{seed}_f{fold}.npy` | each fold model's predicted label for the 50k test tweets (int8) |
-| `test_ensemble_probs.npy` | average of the 15 models' probabilities, shape 50000 × 20 (float16) |
-| `y_test.npy` | true test labels |
-| `test_examples.csv` | one row per test tweet: `text`, `label`, `n_tokens`, `n_oov`, `oov_rate`, `n_chars`, `pred_ensemble`, `correct`, `p_label` (probability given to the true emoji) |
+| cell | **GRU 22.8** · LSTM 21.5 |
+| embeddings | **frozen 22.8** · trainable 21.2 · random 18.9 |
+| direction | **one way 22.8** · both ways 22.7 |
+| readout | last 22.8 · max 22.7 · **mean+max 23.2** |
+| word dropout | **0: 22.8** · 0.25: 21.9 |
 
-And `results/p1_cv_results.json`: Project 1's 15 CV scores for all 12 systems (pick `system == "logistic | bow+bigrams"`).
+Hidden size (128) and learning rate (Adam 1e-3) were kept fixed to save compute; step 3 already studied the learning rate.
+
+**4b. Data size** (`step4_rnn.py datasize`, figure `results/figures/slide4_datasize.png`), validation macro-F1 (%):
+
+| training tweets | GRU frozen | GRU trainable | GRU random | embed-and-pool |
+|---|---|---|---|---|
+| 10% (4.5k) | **17.0** | 16.7 | 13.0 | 15.4 |
+| 30% (13.5k) | **21.1** | 19.5 | 15.8 | 19.2 |
+| 100% (45k) | **23.2** | 22.2 | 19.9 | 21.0 |
+
+What it shows:
+- **Pretraining matters most.** Random vectors are 3–4 points worse at every size; with 10% of the data the frozen GRU is
+  still 4 points ahead of them.
+- **Frozen ≥ trainable.** Fine-tuning adds 8M parameters and over-fits: its best epoch comes earlier (3 vs 6 on full data)
+  and it scores 1–1.6 points lower. 45k tweets is not enough to improve on vectors learned from 2B tweets.
+- **The GRU beats embed-and-pool at every data size**, so word order helps even with little data.
+- **Readout:** mean+max over all states is best and very stable (sd 0.05); the last state alone forgets early words.
+- **LSTM < GRU** at the same settings (we did not tune the LSTM separately).
+
+## Step 5: hyperparameter search, variance, Bayesian comparison
+
+**How the search is structured** (coarse to fine):
+1. **One factor at a time** (step 3 and step 4 sweeps): main effects, 3 seeds each.
+2. **Random search over combinations** (`step5_search.py search`): for every factor, keep the values within 1 point of its
+   best (smaller gaps are seed noise), then 6 random combinations × 3 seeds. Space: GRU · frozen · {one way, both ways} ·
+   {last, max, mean+max} · {word dropout 0, 0.25}. Figure `results/figures/slide5_search.png`.
+3. **Re-estimate the winner** with Project 1's exact 5 folds × 3 seeds (`step5_search.py cv`), and its trainable twin.
+
+Best on validation: **bidirectional GRU · frozen · mean+max · word dropout 0.25: 23.5** (step 4's best: 23.2).
+Both ways and word dropout did not help on their own (step 4), only in combination; that is what the combination search is for.
+
+**Variance.** Every setting has 3 seeds; the seed alone moves a setting by up to ±1 point (default GRU: 21.9 / 23.6 / 22.8),
+so validation gaps under ~1 point are not evidence. Picking the best of 14 noisy settings is optimistic (**winner's curse**):
+23.5 on validation becomes 22.4 in fresh cross-validation. In CV the spread comes from both folds and seeds, and how much the
+seed adds differs per system (sd over seeds 0.0–0.4 points; `variance` in `step5_compare.json`), so one seed is never enough.
+
+**Bayesian comparison** (`step5_search.py compare`): correlated t-test on the 15 paired CV scores (same folds and seeds for
+every system), `BenavoliCorrelatedT(..., runs=3)`, **ROPE ±1 point** as in Project 1 (0.5 and 2 points in `step5_compare.json`).
+
+| A vs B | B − A | P(A better) | P(equal) | P(B better) |
+|---|---|---|---|---|
+| embed-and-pool vs **BiGRU** | +2.5 | 0.000 | 0.001 | **0.999** |
+| Project 1 BoW vs BiGRU | +0.8 | 0.001 | **0.64** | 0.36 |
+| BiGRU frozen vs trainable | −1.2 | **0.65** | 0.35 | 0.000 |
+| Project 1 BoW vs embed-and-pool | −1.7 | **0.96** | 0.04 | 0.000 |
+| step 4 GRU vs search BiGRU | +0.4 | 0.000 | **0.98** | 0.02 |
+
+- The recurrent encoder is clearly better than embed-and-pool.
+- Against Project 1, CV says "practically equal or better, not worse"; on the test set the BiGRU is clearly ahead (below).
+- Frozen embeddings are at least as good as trainable ones.
+- The random search's gain over step 4 is **practically zero** (P(equal) = 0.98): both GRUs are equally good. We report the
+  search winner because "highest mean validation score" was the rule fixed before running CV.
+
+**Test set** (used once, after all choices; figure `results/figures/slide5_cv_test.png`):
+
+| macro-F1 (%) | Project 1 BoW | embed-and-pool | BiGRU |
+|---|---|---|---|
+| cross-validation (15 scores) | 21.6 ± 0.4 | 19.9 ± 0.4 | **22.4 ± 0.6** |
+| test, single fold models (mean of 15) | 19.0 | 20.0 | **22.4** |
+| test, majority vote of 15 | 19.5 | 20.5 | **23.9** |
+| test accuracy, majority vote | **27.8%** | 22.1% | 24.6% |
+
+Final model: **bidirectional GRU (128 per direction) on frozen GloVe Twitter 200d, mean+max readout, word dropout 0.25**,
+`results/step5_cv/gru-frozen-h128-bi-meanmax-wd0.25-lr0.001/`.
+
+## Step 6: error analysis
+
+Three systems on the same 50k test tweets (`step6_errors.py`): Project 1 BoW (majority vote), embed-and-pool, BiGRU
+(both ensembles of their 15 CV models). Features, each with the reason we expected it to matter:
+
+| Feature | Why |
+|---|---|
+| `n_tokens` | longer tweets: more context, but harder to squeeze into one vector |
+| `unseen_rate` | words never seen in training: BoW knows nothing about them, GloVe does (step 3's hypothesis) |
+| `oov_rate` | tokens without a GloVe vector (zero vectors for the embedding models) |
+| `log_freq` | how common the tweet's words are in training |
+| `location` | Instagram-style "… @ Place" ending (49% of tweets) |
+| `n_hashtags` | glued words (`#sundayfunday`), often unknown to GloVe |
+| `negation` | averaging ignores it; a GRU can in principle use it |
+| `sentiment` | positive − negative opinion words (Hu & Liu lexicon, as in the tutorial) |
+| `intensity` | elongation, `!!!`, ALL CAPS |
+| `user_mention` | tweets addressed to someone (😘 😉) |
+
+**Two tests:** (a) macro-F1 per feature bin (`step6_bins.json`, figure `slide6_bins.png`); (b) the course's Bayesian
+correctness model (`part2/analysis.py`): "is the prediction correct?" ~ standardised features, one weight vector per system,
+on 10k test tweets (2 chains, r̂ ≤ 1.002, 0 divergences; `step6_bda.json`, figure `slide6_bda.png`).
+
+Findings:
+- **The BiGRU is better on every kind of tweet**: +3–4 points over the other two in every bin of every feature.
+- **Unseen words (step 3's hypothesis): confirmed.** From tweets without unseen words to tweets with >10%:
+  BoW −2.6 points, embed-and-pool −0.9, BiGRU −1.2. Pretrained vectors protect against vocabulary not seen in training.
+- **Length** hurts BoW (weight −0.13) but not the BiGRU (+0.04); P = 1.0 that the two weights differ.
+  Very short tweets (≤ 8 tokens) are the hardest for every system.
+- **BoW relies on frequent words** (weight +0.19 for word frequency); the embedding models do not.
+- **Negation** costs BoW 2.5 points and the BiGRU 1.3: a hint that word order helps, but weak (P = 0.70).
+- **Per emoji** (`per_class_f1` in `step6_examples.json`): the BiGRU gains most on 🇺🇸 (+13 over embed-and-pool), 📷 (+9),
+  🔥 (+8). It is weakest on ❤ (7 vs BoW's 40): the weighted loss stops it from predicting the most common emoji all the time,
+  which is also why its accuracy is lower than BoW's while its macro-F1 is higher.
+- **Biggest confusion:** 📸 predicted as 📷 47% of the time (centroid cosine 0.99 in step 2), then 😜 → 😉 (19%).
+
+**What we would prioritise next:** treat 📷/📸 and the heart colours as near-duplicates (merge them, or report top-2);
+contextual embeddings instead of one vector per word; split glued hashtags; tune the LSTM separately.
+
+## Limitations and decisions to know about
+
+- Compute: the step 4 sweep keeps hidden size and learning rate fixed, the search has 6 combinations, and the final CV
+  has 2 systems (random embeddings are covered by the data-size runs). Seeds stay at 3 everywhere.
+- The Bayesian correctness model scores accuracy-style correctness, so frequent emojis weigh more there than in macro-F1.
+- Sweeps use the official validation set; cross-validation uses folds of the training set; the test set is used once.
 
 ---
 
-## What is left (teammate)
-
-### Step 4: GRU / LSTM, frozen vs trainable embeddings, data size
-- Reuse `common.py`: `load_data()`, `load_embeddings("glove200")`, `emb.tokenize(text)`, `emb.index` (word → row), `emb.vectors`.
-- Turn each tweet into a list of row ids (skip OOV words, or map them to one extra all-zero row), pad to the batch's longest tweet.
-- `nn.Embedding.from_pretrained(torch.tensor(emb.vectors), freeze=True)` for frozen, `freeze=False` for trainable, then `nn.GRU` / `nn.LSTM`
-  (e.g. 1 layer, 128 hidden, take the last hidden state or max-pool the outputs) → `nn.Linear(…, 20)`.
-- Data size: train on 10% / 25% / 50% / 100% of the training tweets. Expectation to test: frozen pretrained vectors help most when data is small;
-  trainable ones may overfit on small data.
-- Compare against the step 3 model (validation macro-F1, then CV like step 3).
-- Use `common.kfold_ids(len(y), 5, seed)` with seeds 0, 1, 2 so the folds match Projects 1 and 2.
-
-### Step 5: hyperparameter search, seeds, variance, ROPE
-- Search on the validation set (e.g. learning rate, hidden size, dropout, pooling), with several seeds per setting; report the spread across seeds.
-- Final candidates: 5 folds × 3 seeds, same as `step3_pool.py cv` (you can copy `run_cv`).
-- Bayesian comparison: `BenavoliCorrelatedT(scores_A, scores_B, runs=3, names=[…])` from the course repo's `part1/analysis.py`,
-  with the 15 scores sorted by (seed, fold) so they pair up. Project 1 used **ROPE = 0.01** (1 macro-F1 point).
-  Comparisons to include: step 3 model vs Project 1 best; GRU/LSTM vs step 3; frozen vs trainable.
-
-### Step 6: error analysis
-- `test_examples.csv`: macro-F1 / accuracy by tweet length and OOV rate (bins), confusion matrix from `pred_ensemble`,
-  per-emoji F1, and a few wrong tweets with high confidence (`p_label` low).
-- Check the hypothesis from step 3: does the embedding model do better than Project 1 on tweets with words unseen in training?
-  Project 1's test predictions are written by `project/run_experiments.py` in the Project 1 repo (not committed there; rerun
-  `--encoders bow+bigrams --models logistic`).
-- Our first look: accuracy hardly changes with OOV rate (21.5% for tweets with no OOV word, 21–23% with some).
-
-### Slides and submission
-- Slides 4–6: the editable PowerPoint of slides 1–3 (same design as Project 1) is not in the repo; ask Pravallika for it and add slides 4–6 there.
-- Slide 1 already has the repo link: github.com/pravallikalakkireddy/NLP-project-2
+## Slides and submission
+- Slides 1–3: `slides/project2_slides_1-3.pdf`. Slides 4–6 use the figures `results/figures/slide4_*.png`,
+  `slide5_*.png`, `slide6_*.png` (`slide5_search.png` and `slide6_bda.png` also work as backup slides).
 - Export the 6 slides to one PDF (Keynote/PowerPoint: File → Export → PDF).
 
 ---
@@ -289,4 +409,22 @@ And `results/p1_cv_results.json`: Project 1's 15 CV scores for all 12 systems (p
 | Why is CV worse but test better than Project 1? | Bag-of-words fits the training vocabulary well but cannot handle unseen words; pretrained vectors generalise. Hypothesis, checked in step 6. |
 | Why a weighted loss? | Classes are imbalanced and our metric is macro-F1. Here it gave the same macro-F1 but lower accuracy. |
 
+## Oral exam: likely questions on steps 4–6
+
+| Question | Short answer |
+|---|---|
+| What is the final model? | Bidirectional GRU (128 per direction) on frozen GloVe Twitter 200d, mean+max over the states, word dropout 0.25, same MLP head as step 3. |
+| Why a GRU and not an LSTM? | Both tested at the same settings: GRU 22.8 vs LSTM 21.5. Fewer parameters, trains faster. We did not tune the LSTM separately. |
+| What is the readout and why mean+max? | How the per-word states become one tweet vector. The last state forgets early words; mean+max over all states uses every position and was best and most stable. |
+| Why frozen embeddings? | Trainable ones over-fit (best epoch 3 vs 6) and score 1.2 lower in CV (P = 0.65 frozen better, otherwise equal). 45k tweets is too little to improve on vectors from 2B tweets. |
+| Why random embeddings at all? | A control: it measures what pretraining contributes (3–4 points, at every data size). |
+| How did you structure the search? | Coarse to fine: one factor at a time → random combinations of the values within 1 point of the best → 5 folds × 3 seeds for the winner. 3 seeds per setting throughout. |
+| Did the random search help? | It found the best validation score (23.5 vs 23.2), but in CV the two GRUs are practically equal (P = 0.98). It did show that both ways + word dropout only help together. |
+| What is the winner's curse? | Picking the best of many noisy scores overestimates it: 23.5 on validation → 22.4 in CV. Fix: re-estimate on fresh folds and seeds. |
+| Why the correlated t-test? | CV folds share training data, so their scores are correlated; a plain t-test would be over-confident. `runs=3` because of the 3 seeds. |
+| Why ROPE = 1 point? | Smaller differences are within seed noise and would not change which system we use. Results at 0.5 and 2 points are in `step5_compare.json`. |
+| Is the BiGRU better than Project 1? | CV: +0.8, practically equal (0.64) or better (0.36), not worse. Test: 23.9 vs 19.5. BoW fits its training vocabulary but generalises worse to unseen words. |
+| Why is its accuracy lower than Project 1's? | Weighted loss: it predicts rare emojis more often and gives up ❤ (F1 7 vs 40). Macro-F1 is our metric, so that trade is intended. |
+| What does a weight in the Bayesian correctness model mean? | The effect of a standardised feature on the log-odds that the system is right. Negative: the system struggles as the feature grows. Comparing weights across systems shows where they differ. |
+| Why are 📷 and 📸 confused? | They appear in the same contexts (centroid cosine 0.99), so from text alone they are close to indistinguishable. |
 

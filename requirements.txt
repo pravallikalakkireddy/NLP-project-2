@@ -7,3 +7,9 @@ torch
 tokenizers
 datasets
 tqdm
+seaborn
+baycomp
+numpyro
+jax
+arviz
+nltk

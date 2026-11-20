@@ -1,0 +1,167 @@
+[
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "trainable",
+  "seed": 0,
+  "fold": 0,
+  "macro_f1": 0.20654282444761404,
+  "accuracy": 0.20433333333333334,
+  "best_epoch": 5
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "trainable",
+  "seed": 0,
+  "fold": 1,
+  "macro_f1": 0.21147276939867746,
+  "accuracy": 0.244,
+  "best_epoch": 2
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "trainable",
+  "seed": 0,
+  "fold": 2,
+  "macro_f1": 0.21320544632316335,
+  "accuracy": 0.23366666666666666,
+  "best_epoch": 2
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "trainable",
+  "seed": 0,
+  "fold": 3,
+  "macro_f1": 0.21423938655699057,
+  "accuracy": 0.21688888888888888,
+  "best_epoch": 3
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "trainable",
+  "seed": 0,
+  "fold": 4,
+  "macro_f1": 0.21769305217336327,
+  "accuracy": 0.24144444444444443,
+  "best_epoch": 2
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "trainable",
+  "seed": 1,
+  "fold": 0,
+  "macro_f1": 0.21056065328306728,
+  "accuracy": 0.24366666666666667,
+  "best_epoch": 2
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "trainable",
+  "seed": 1,
+  "fold": 1,
+  "macro_f1": 0.2023783233757165,
+  "accuracy": 0.21544444444444444,
+  "best_epoch": 3
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "trainable",
+  "seed": 1,
+  "fold": 2,
+  "macro_f1": 0.22044039557050082,
+  "accuracy": 0.23477777777777778,
+  "best_epoch": 2
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "trainable",
+  "seed": 1,
+  "fold": 3,
+  "macro_f1": 0.21606898356559395,
+  "accuracy": 0.22344444444444445,
+  "best_epoch": 4
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "trainable",
+  "seed": 1,
+  "fold": 4,
+  "macro_f1": 0.21368776429838418,
+  "accuracy": 0.20944444444444443,
+  "best_epoch": 4
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "trainable",
+  "seed": 2,
+  "fold": 0,
+  "macro_f1": 0.2130017736011484,
+  "accuracy": 0.22544444444444445,
+  "best_epoch": 4
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "trainable",
+  "seed": 2,
+  "fold": 1,
+  "macro_f1": 0.21211689817567642,
+  "accuracy": 0.2071111111111111,
+  "best_epoch": 5
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "trainable",
+  "seed": 2,
+  "fold": 2,
+  "macro_f1": 0.21202917388229642,
+  "accuracy": 0.2081111111111111,
+  "best_epoch": 5
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "trainable",
+  "seed": 2,
+  "fold": 3,
+  "macro_f1": 0.213717861412897,
+  "accuracy": 0.217,
+  "best_epoch": 4
+ },
+ {
+  "encoder": "glove200-h128-bi-meanmax-wd0.25-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-bi-meanmax-wd0.25-lr0.001",
+  "role": "trainable",
+  "seed": 2,
+  "fold": 4,
+  "macro_f1": 0.21212422569141604,
+  "accuracy": 0.20555555555555555,
+  "best_epoch": 5
+ }
+]

@@ -1,0 +1,462 @@
+{
+ "per_class_f1": {
+  "P1 BoW": {
+   "red_heart": 0.403,
+   "heart_eyes": 0.213,
+   "joy_tears": 0.334,
+   "two_hearts": 0.071,
+   "fire": 0.383,
+   "smiling": 0.065,
+   "sunglasses": 0.11,
+   "sparkles": 0.178,
+   "blue_heart": 0.052,
+   "kiss": 0.053,
+   "camera": 0.319,
+   "US_flag": 0.381,
+   "sun": 0.28,
+   "purple_heart": 0.03,
+   "wink": 0.058,
+   "hundred": 0.081,
+   "grin": 0.045,
+   "xmas_tree": 0.57,
+   "camera_flash": 0.246,
+   "wink_tongue": 0.025
+  },
+  "P2 pool": {
+   "red_heart": 0.127,
+   "heart_eyes": 0.165,
+   "joy_tears": 0.335,
+   "two_hearts": 0.164,
+   "fire": 0.419,
+   "smiling": 0.079,
+   "sunglasses": 0.098,
+   "sparkles": 0.228,
+   "blue_heart": 0.096,
+   "kiss": 0.121,
+   "camera": 0.264,
+   "US_flag": 0.38,
+   "sun": 0.295,
+   "purple_heart": 0.055,
+   "wink": 0.103,
+   "hundred": 0.16,
+   "grin": 0.071,
+   "xmas_tree": 0.595,
+   "camera_flash": 0.293,
+   "wink_tongue": 0.07
+  },
+  "P2 RNN": {
+   "red_heart": 0.074,
+   "heart_eyes": 0.195,
+   "joy_tears": 0.384,
+   "two_hearts": 0.183,
+   "fire": 0.497,
+   "smiling": 0.098,
+   "sunglasses": 0.128,
+   "sparkles": 0.281,
+   "blue_heart": 0.129,
+   "kiss": 0.147,
+   "camera": 0.355,
+   "US_flag": 0.513,
+   "sun": 0.344,
+   "purple_heart": 0.077,
+   "wink": 0.119,
+   "hundred": 0.215,
+   "grin": 0.093,
+   "xmas_tree": 0.625,
+   "camera_flash": 0.268,
+   "wink_tongue": 0.078
+  },
+  "RNN - pool": {
+   "red_heart": -0.053,
+   "heart_eyes": 0.03,
+   "joy_tears": 0.049,
+   "two_hearts": 0.019,
+   "fire": 0.078,
+   "smiling": 0.019,
+   "sunglasses": 0.031,
+   "sparkles": 0.053,
+   "blue_heart": 0.034,
+   "kiss": 0.026,
+   "camera": 0.091,
+   "US_flag": 0.133,
+   "sun": 0.049,
+   "purple_heart": 0.022,
+   "wink": 0.015,
+   "hundred": 0.055,
+   "grin": 0.022,
+   "xmas_tree": 0.03,
+   "camera_flash": -0.025,
+   "wink_tongue": 0.008
+  }
+ },
+ "top_confusions_rnn": [
+  {
+   "true": "camera_flash",
+   "pred": "camera",
+   "share": 0.474
+  },
+  {
+   "true": "wink_tongue",
+   "pred": "wink",
+   "share": 0.19
+  },
+  {
+   "true": "camera",
+   "pred": "camera_flash",
+   "share": 0.17
+  },
+  {
+   "true": "red_heart",
+   "pred": "two_hearts",
+   "share": 0.147
+  },
+  {
+   "true": "purple_heart",
+   "pred": "two_hearts",
+   "share": 0.141
+  },
+  {
+   "true": "grin",
+   "pred": "wink",
+   "share": 0.127
+  },
+  {
+   "true": "joy_tears",
+   "pred": "wink",
+   "share": 0.127
+  },
+  {
+   "true": "blue_heart",
+   "pred": "two_hearts",
+   "share": 0.125
+  }
+ ],
+ "confident_mistakes_rnn": [
+  {
+   "text": "Happy Veterans Day to our Marines #Bellamybreakfast #2017 @ Bellamy…",
+   "true": "❤",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "🇺🇸",
+   "rnn_conf": 0.991
+  },
+  {
+   "text": "Tourista #USA @ United States Capitol",
+   "true": "📸",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "🇺🇸",
+   "rnn_conf": 0.983
+  },
+  {
+   "text": "USA has freedom of speech alright @ San Francisco, California",
+   "true": "😂",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "🇺🇸",
+   "rnn_conf": 0.981
+  },
+  {
+   "text": "VETERANS DAY Friday November 10th ________________________________________INSIDE “La Perle…",
+   "true": "🔥",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "🇺🇸",
+   "rnn_conf": 0.973
+  },
+  {
+   "text": "Rocking Around The Christmas Tree! #Glitterville #Christmas @ Los Angeles,…",
+   "true": "✨",
+   "rnn": "🎄",
+   "pool": "🎄",
+   "bow": "🎄",
+   "rnn_conf": 0.966
+  },
+  {
+   "text": "It’s beginning to feel a lot like #Christmas #nyc #christmastree #holiday #lights…",
+   "true": "❤",
+   "rnn": "🎄",
+   "pool": "🎄",
+   "bow": "🎄",
+   "rnn_conf": 0.958
+  },
+  {
+   "text": "It’s looking like Christmas time at the Thomas Professionals Bldg. …",
+   "true": "😁",
+   "rnn": "🎄",
+   "pool": "🎄",
+   "bow": "🎄",
+   "rnn_conf": 0.953
+  },
+  {
+   "text": "Veterans get a $500 closing cost credit &amp; save $985 with no home loan origination fees when you apply in November …",
+   "true": "💜",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "😊",
+   "rnn_conf": 0.953
+  },
+  {
+   "text": "#veteransday #armisticeday regranned from @user - Thank you to all of the Veterans …",
+   "true": "❤",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "❤",
+   "rnn_conf": 0.952
+  },
+  {
+   "text": "#shootingrange #metime #nra #2ndamendment #merica @ Shoot Point Blank - Greenwood",
+   "true": "😊",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "🇺🇸",
+   "rnn_conf": 0.951
+  },
+  {
+   "text": "#crackerbarreloldcountrystore #Maryland #baltimore #usa @ Cracker Barrel Old Country Store",
+   "true": "😍",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "🇺🇸",
+   "rnn_conf": 0.94
+  },
+  {
+   "text": "Merry and white Christmas after all #christmaseve #christmastree…",
+   "true": "😘",
+   "rnn": "🎄",
+   "pool": "🎄",
+   "bow": "🎄",
+   "rnn_conf": 0.938
+  },
+  {
+   "text": "Magic Kingdom and Epcot @ Magic Kingdom at Walt Disney World",
+   "true": "🇺🇸",
+   "rnn": "✨",
+   "pool": "✨",
+   "bow": "❤",
+   "rnn_conf": 0.938
+  },
+  {
+   "text": "Happy 4th of July! August bags are made in America! •••#madeinamerica #madeinla…",
+   "true": "💯",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "🇺🇸",
+   "rnn_conf": 0.937
+  },
+  {
+   "text": "LIT AF #trapseries Ed. 4 #getupoutmytraphouse #traphouse #trapwonderland #traphouseatl…",
+   "true": "✨",
+   "rnn": "🔥",
+   "pool": "🔥",
+   "bow": "🔥",
+   "rnn_conf": 0.936
+  }
+ ],
+ "disagreement": {
+  "rnn_right_pool_wrong": 3925,
+  "pool_right_rnn_wrong": 2649,
+  "feature_means": {
+   "rnn_only": {
+    "n_tokens": 16.057,
+    "unseen_rate": 0.074,
+    "oov_rate": 0.044,
+    "log_freq": 4.823,
+    "location": 0.501,
+    "n_hashtags": 1.184,
+    "negation": 0.073,
+    "sentiment": 0.032,
+    "intensity": 0.314,
+    "user_mention": 0.219
+   },
+   "pool_only": {
+    "n_tokens": 16.228,
+    "unseen_rate": 0.077,
+    "oov_rate": 0.05,
+    "log_freq": 4.906,
+    "location": 0.456,
+    "n_hashtags": 1.246,
+    "negation": 0.076,
+    "sentiment": 0.035,
+    "intensity": 0.327,
+    "user_mention": 0.235
+   },
+   "all": {
+    "n_tokens": 15.724,
+    "unseen_rate": 0.073,
+    "oov_rate": 0.043,
+    "log_freq": 4.897,
+    "location": 0.494,
+    "n_hashtags": 1.125,
+    "negation": 0.072,
+    "sentiment": 0.034,
+    "intensity": 0.305,
+    "user_mention": 0.194
+   }
+  }
+ },
+ "examples_rnn_right_pool_wrong": [
+  {
+   "text": "Ling Ling just powered though Strength like a champ! Love you great to have you in class my…",
+   "true": "😘",
+   "rnn": "😘",
+   "pool": "💜",
+   "bow": "❤",
+   "rnn_conf": 0.161
+  },
+  {
+   "text": "Caught this driving up gun hill #puertoRico @ Gun Hill Road",
+   "true": "😂",
+   "rnn": "😂",
+   "pool": "📷",
+   "bow": "😂",
+   "rnn_conf": 0.169
+  },
+  {
+   "text": "Life is simple, go mudding and listen to country music @ Hialeah…",
+   "true": "🇺🇸",
+   "rnn": "🇺🇸",
+   "pool": "💯",
+   "bow": "❤",
+   "rnn_conf": 0.125
+  },
+  {
+   "text": "I Chicago @ Oak Street Beach",
+   "true": "💙",
+   "rnn": "💙",
+   "pool": "😎",
+   "bow": "❤",
+   "rnn_conf": 0.215
+  },
+  {
+   "text": "@user put out a song called 'Drew Barrymore' and it's a fricking banger @ Mac's Bar",
+   "true": "🔥",
+   "rnn": "🔥",
+   "pool": "😂",
+   "bow": "🔥",
+   "rnn_conf": 0.267
+  },
+  {
+   "text": "Meow! Always love when this HOT mama @user THE creator of the Pussycat Dolls drops by…",
+   "true": "🔥",
+   "rnn": "🔥",
+   "pool": "✨",
+   "bow": "📷",
+   "rnn_conf": 0.334
+  },
+  {
+   "text": "Sperry men's hurricane print navy socks........What ? #sperry #sperrytopsider #hurricanesocks…",
+   "true": "😜",
+   "rnn": "😜",
+   "pool": "🇺🇸",
+   "bow": "😍",
+   "rnn_conf": 0.123
+  },
+  {
+   "text": "\"A brand new little baby boy to fill our hearts &amp; lives with Joy\" Welcome baby Liam congrats…",
+   "true": "💙",
+   "rnn": "💙",
+   "pool": "💜",
+   "bow": "❤",
+   "rnn_conf": 0.239
+  },
+  {
+   "text": "One of my favorites @ Balboa Park",
+   "true": "💕",
+   "rnn": "💕",
+   "pool": "💙",
+   "bow": "❤",
+   "rnn_conf": 0.233
+  },
+  {
+   "text": "Starting my Sunday morning off with some shine // liketoknow.it @user",
+   "true": "✨",
+   "rnn": "✨",
+   "pool": "☀",
+   "bow": "✨",
+   "rnn_conf": 0.322
+  }
+ ],
+ "examples_pool_right_rnn_wrong": [
+  {
+   "text": "We our audiences- look at those smiles! #familytime #siblinglove #narnia #nycfamily…",
+   "true": "❤",
+   "rnn": "😍",
+   "pool": "❤",
+   "bow": "❤",
+   "rnn_conf": 0.137
+  },
+  {
+   "text": "My #mcm is the baby whisperer! He ’s babies more than any woman I…",
+   "true": "❤",
+   "rnn": "💜",
+   "pool": "❤",
+   "bow": "❤",
+   "rnn_conf": 0.201
+  },
+  {
+   "text": "All aboard!! The hot mess express Jr.!! Sooo cute though! #baileybird @ Fish Hatchery Park",
+   "true": "😂",
+   "rnn": "😍",
+   "pool": "😂",
+   "bow": "😍",
+   "rnn_conf": 0.221
+  },
+  {
+   "text": "On the train from #newjersey to #newyorkcity with my bae, my life ..#archanakapoor…",
+   "true": "❤",
+   "rnn": "😘",
+   "pool": "❤",
+   "bow": "❤",
+   "rnn_conf": 0.151
+  },
+  {
+   "text": "My vacation starts now!!! @ Da Crib ( Home )",
+   "true": "😁",
+   "rnn": "😎",
+   "pool": "😁",
+   "bow": "😍",
+   "rnn_conf": 0.194
+  },
+  {
+   "text": "\" Thank you @user for the and Supports, We love you very much.\" #inspired yvynails #amazing…",
+   "true": "❤",
+   "rnn": "💜",
+   "pool": "❤",
+   "bow": "❤",
+   "rnn_conf": 0.2
+  },
+  {
+   "text": "Please don’t judge me for the lack of decorations.... I just got here Say hello to Dix &amp;…",
+   "true": "😉",
+   "rnn": "🎄",
+   "pool": "😉",
+   "bow": "😂",
+   "rnn_conf": 0.281
+  },
+  {
+   "text": "I got the best present of all...a forever love @ Arcadia, North…",
+   "true": "❤",
+   "rnn": "💕",
+   "pool": "❤",
+   "bow": "😍",
+   "rnn_conf": 0.229
+  },
+  {
+   "text": "Fresh Fades served DAILY @user",
+   "true": "🔥",
+   "rnn": "💯",
+   "pool": "🔥",
+   "bow": "😍",
+   "rnn_conf": 0.239
+  },
+  {
+   "text": "The other day in San Francisco Sing your heart out. #sing #streets #sanfrancisco #fun…",
+   "true": "❤",
+   "rnn": "💙",
+   "pool": "❤",
+   "bow": "❤",
+   "rnn_conf": 0.163
+  }
+ ]
+}

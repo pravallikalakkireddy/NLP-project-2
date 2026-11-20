@@ -1,0 +1,167 @@
+[
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-meanmax-wd0.0-lr0.001",
+  "role": "trainable",
+  "seed": 0,
+  "fold": 0,
+  "macro_f1": 0.20017670052524497,
+  "accuracy": 0.19622222222222221,
+  "best_epoch": 4
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-meanmax-wd0.0-lr0.001",
+  "role": "trainable",
+  "seed": 0,
+  "fold": 1,
+  "macro_f1": 0.21674701670032553,
+  "accuracy": 0.23344444444444445,
+  "best_epoch": 2
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-meanmax-wd0.0-lr0.001",
+  "role": "trainable",
+  "seed": 0,
+  "fold": 2,
+  "macro_f1": 0.21710909434962317,
+  "accuracy": 0.238,
+  "best_epoch": 2
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-meanmax-wd0.0-lr0.001",
+  "role": "trainable",
+  "seed": 0,
+  "fold": 3,
+  "macro_f1": 0.2153453825326989,
+  "accuracy": 0.21711111111111112,
+  "best_epoch": 3
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-meanmax-wd0.0-lr0.001",
+  "role": "trainable",
+  "seed": 0,
+  "fold": 4,
+  "macro_f1": 0.21594024712300933,
+  "accuracy": 0.2421111111111111,
+  "best_epoch": 2
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-meanmax-wd0.0-lr0.001",
+  "role": "trainable",
+  "seed": 1,
+  "fold": 0,
+  "macro_f1": 0.20286687391831754,
+  "accuracy": 0.2048888888888889,
+  "best_epoch": 6
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-meanmax-wd0.0-lr0.001",
+  "role": "trainable",
+  "seed": 1,
+  "fold": 1,
+  "macro_f1": 0.21795221401208825,
+  "accuracy": 0.23844444444444443,
+  "best_epoch": 2
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-meanmax-wd0.0-lr0.001",
+  "role": "trainable",
+  "seed": 1,
+  "fold": 2,
+  "macro_f1": 0.21371548121169717,
+  "accuracy": 0.2291111111111111,
+  "best_epoch": 2
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-meanmax-wd0.0-lr0.001",
+  "role": "trainable",
+  "seed": 1,
+  "fold": 3,
+  "macro_f1": 0.21126715236282126,
+  "accuracy": 0.222,
+  "best_epoch": 2
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-meanmax-wd0.0-lr0.001",
+  "role": "trainable",
+  "seed": 1,
+  "fold": 4,
+  "macro_f1": 0.2137818605271753,
+  "accuracy": 0.20955555555555555,
+  "best_epoch": 3
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-meanmax-wd0.0-lr0.001",
+  "role": "trainable",
+  "seed": 2,
+  "fold": 0,
+  "macro_f1": 0.21013965431193343,
+  "accuracy": 0.21055555555555555,
+  "best_epoch": 5
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-meanmax-wd0.0-lr0.001",
+  "role": "trainable",
+  "seed": 2,
+  "fold": 1,
+  "macro_f1": 0.20160613917015696,
+  "accuracy": 0.20255555555555554,
+  "best_epoch": 5
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-meanmax-wd0.0-lr0.001",
+  "role": "trainable",
+  "seed": 2,
+  "fold": 2,
+  "macro_f1": 0.20282762963499362,
+  "accuracy": 0.2031111111111111,
+  "best_epoch": 5
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-meanmax-wd0.0-lr0.001",
+  "role": "trainable",
+  "seed": 2,
+  "fold": 3,
+  "macro_f1": 0.2114712860000826,
+  "accuracy": 0.21455555555555555,
+  "best_epoch": 4
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-trainable-h128-meanmax-wd0.0-lr0.001",
+  "role": "trainable",
+  "seed": 2,
+  "fold": 4,
+  "macro_f1": 0.1993473190648663,
+  "accuracy": 0.198,
+  "best_epoch": 6
+ }
+]
