@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Project 2 slides 4–6</title>
+<!-- Slides 4-6 in the design of slides 1-3 (768 x 433.2 pt pages). Print with Chrome:
+     "Google Chrome" --headless --no-pdf-header-footer --print-to-pdf=slides_4-6.pdf slides_4-6.html -->
+<style>
+  @page { size: 768pt 433.2pt; margin: 0; }
+  :root { --ink: #1f2937; --rule: #c8666d; --muted: #6b7280; --box: #f2f2f0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #fff; color: var(--ink); font-family: "Times New Roman", Times, serif; }
+  .slide { position: relative; width: 1024px; height: 577.6px; overflow: hidden; page-break-after: always; break-after: page; }
+  .slide:last-child { page-break-after: auto; break-after: auto; }
+  h1 { position: absolute; left: 48px; top: 17px; font-size: 32px; font-weight: bold; letter-spacing: -0.2px; white-space: nowrap; }
+  h1 .n { margin-right: 14px; }
+  .rule { position: absolute; left: 40px; right: 38px; top: 59px; height: 3px; background: var(--rule); }
+  .left { position: absolute; left: 48px; top: 80px; width: 440px; font-size: 13.4px; line-height: 1.32; }
+  .left p { margin: 6px 0 2px; }
+  .left ul { list-style: none; margin: 0 0 0 40px; }
+  .left li { position: relative; margin: 3px 0; padding-left: 18px; }
+  .left li::before { content: "–"; position: absolute; left: 0; }
+  .right { position: absolute; left: 512px; top: 80px; width: 494px; }
+  .right img { display: block; width: 100%; }
+  .box { background: var(--box); font-family: Menlo, "DejaVu Sans Mono", monospace; font-size: 9.4px; line-height: 1.42;
+         padding: 8px 10px; white-space: pre; color: #111; }
+  .footer { position: absolute; left: 41px; top: 543px; font-size: 11.5px; color: var(--muted); }
+  b { font-weight: bold; }
+</style>
+</head>
+<body>
+
+<!-- ============================== slide 4 ============================== -->
+<section class="slide">
+  <h1><span class="n">4</span>Recurrent encoder: a GRU reads the words in order</h1>
+  <div class="rule"></div>
+  <div class="left">
+    <p>tweet → GloVe tokens → word vectors → GRU / LSTM → readout → MLP → 20 emojis</p>
+    <ul>
+      <li>only the encoder changes vs step 3: same tokens, GloVe 200d, MLP head, weighted loss, best epoch on 10% of the training data</li>
+    </ul>
+    <p>One factor at a time, 3 seeds each (validation macro-F1, top chart):</p>
+    <ul>
+      <li>GRU 22.8 &gt; LSTM 21.5; readout: mean+max over all states 23.2 &gt; last state 22.8 (the last state forgets early words)</li>
+      <li>embeddings: frozen 22.8 &gt; trainable 21.2 &gt; random 18.9: pretraining is worth ~4 points</li>
+      <li>both directions / word dropout: no gain on their own (22.7 / 21.9)</li>
+    </ul>
+    <p>Training data size: 10 / 30 / 100% of the 45k tweets (bottom chart):</p>
+    <ul>
+      <li>frozen GloVe is best at every size; random vectors stay 3–4 points behind even with all the data</li>
+      <li>trainable GloVe over-fits: 8M extra parameters, best epoch 3 vs 6, 1–1.6 points lower</li>
+      <li>the GRU beats embed-and-pool at every size: word order helps, even with little data</li>
+    </ul>
+  </div>
+  <div class="right">
+    <img src="../results/figures/slide4_sweep.png" alt="Step 4 sweep">
+    <img src="../results/figures/slide4_datasize.png" alt="Training data size" style="width:74%; margin: 10px auto 0;">
+  </div>
+  <div class="footer">NLP1 Project 2 · TweetEval emoji · code: p2/&nbsp; (step4_rnn.py)</div>
+</section>
+
+<!-- ============================== slide 5 ============================== -->
+<section class="slide">
+  <h1><span class="n">5</span>Decisions under uncertainty: search, seeds, Bayes</h1>
+  <div class="rule"></div>
+  <div class="left">
+    <p>Search, coarse to fine:</p>
+    <ul>
+      <li>one factor at a time → random combinations of the values within 1 point of the best → 5 folds × 3 seeds for the winner</li>
+      <li>best: bidirectional GRU · frozen · mean+max · word dropout 0.25 (23.5 on validation); both directions + dropout only help together</li>
+    </ul>
+    <p>Variance:</p>
+    <ul>
+      <li>3 seeds for every setting: the seed alone moves a score by up to ±1 point, so smaller gaps are noise</li>
+      <li>winner's curse: 23.5 on validation → 22.4 in fresh cross-validation</li>
+      <li>the search's gain over step 4's GRU is practically zero (P(equal) = 0.98)</li>
+    </ul>
+    <p>Bayesian correlated t-test on the 15 paired CV scores, ROPE ±1 point (box):</p>
+    <ul>
+      <li>BiGRU vs embed-and-pool: +2.5, P(better) = 0.999</li>
+      <li>vs Project 1: CV practically equal or better, never worse; test 23.9 vs 19.5 (chart)</li>
+      <li>frozen embeddings at least as good as trainable</li>
+    </ul>
+  </div>
+  <div class="right">
+    <img src="../results/figures/slide5_cv_test.png" alt="CV and test macro-F1" style="width:84%; margin: 0 auto;">
+    <div class="box" style="margin-top: 12px;">Bayesian correlated t-test · 15 paired CV scores · ROPE ±1 point
+A → B                            B−A    P(A)   P(=)   P(B)
+embed-and-pool → BiGRU          +2.5   0.00   0.00   1.00
+Project 1 BoW  → BiGRU          +0.8   0.00   0.64   0.36
+BiGRU frozen   → trainable      −1.2   0.65   0.35   0.00
+step 4 GRU     → search BiGRU   +0.4   0.00   0.98   0.02</div>
+  </div>
+  <div class="footer">NLP1 Project 2 · TweetEval emoji · code: p2/&nbsp; (step5_search.py, part1/analysis.py)</div>
+</section>
+
+<!-- ============================== slide 6 ============================== -->
+<section class="slide">
+  <h1><span class="n">6</span>Error analysis: where do the designs differ?</h1>
+  <div class="rule"></div>
+  <div class="left">
+    <p>10 features per test tweet: length, words unseen in training, no GloVe vector, word frequency, "@&nbsp;Place" ending (49% of tweets), hashtags, negation, sentiment, intensity, @user</p>
+    <p>Tested by score per bin (top) and the course's Bayesian correctness model (bottom right; 10k tweets, r̂ ≤ 1.002, 0 divergences):</p>
+    <ul>
+      <li>the BiGRU is better on every kind of tweet: +3–4 points in every bin</li>
+      <li>unseen words (step 3's hypothesis) confirmed: &gt;10% unseen costs BoW 2.6 points, the embedding models ~1</li>
+      <li>length hurts BoW (weight −0.13), not the BiGRU (+0.04); BoW leans on frequent words (+0.19)</li>
+      <li>negation: BoW −2.5, BiGRU −1.3: word order may help, weak evidence</li>
+      <li>📷 / 📸 and the heart colours share contexts: from text alone they are near-identical</li>
+    </ul>
+    <p>Next: treat near-duplicate emojis together (or top-2), contextual embeddings, split glued hashtags</p>
+  </div>
+  <div class="right">
+    <img src="../results/figures/slide6_bins.png" alt="Macro-F1 per feature bin">
+    <div style="display:flex; gap:10px; margin-top: 8px; align-items:flex-start;">
+      <div class="box" style="flex: 0 0 auto; font-size: 9px;">biggest confusions (BiGRU, test)
+📸 → 📷  47%
+😜 → 😉  19%
+📷 → 📸  17%
+❤ → 💕  15%
+
+F1 gain over embed-and-pool
+🇺🇸 +13   📷 +9   🔥 +8
+
+weakest: ❤ 7 (BoW 40):
+weighted loss trades ❤
+for the rare emojis</div>
+      <img src="../results/figures/slide6_bda.png" alt="Bayesian correctness model weights" style="width: 58%;">
+    </div>
+  </div>
+  <div class="footer">NLP1 Project 2 · TweetEval emoji · code: p2/&nbsp; (step6_errors.py, part2/analysis.py)</div>
+</section>
+
+</body>
+</html>

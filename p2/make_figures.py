@@ -43,7 +43,7 @@ def slide4_sweep():
               "readout": {"last": "last", "max": "max", "meanmax": "mean\n+max"},
               "word_drop": {0.0: "0", 0.25: "0.25"}}
     titles = {"cell": "cell", "emb": "embeddings", "bidir": "direction", "readout": "readout", "word_drop": "word dropout"}
-    fig, axes = plt.subplots(1, len(SWEEP), figsize=(11, 2.9), sharey=True,
+    fig, axes = plt.subplots(1, len(SWEEP), figsize=(7.4, 2.7), sharey=True,
                              gridspec_kw={"width_ratios": [len(v) for v in SWEEP.values()]})
     for ax, (factor, values) in zip(axes, SWEEP.items()):
         stats = [df[(default | (df.tag == factor)) & (df[factor] == v)].macro_f1 * 100 for v in values]
@@ -56,12 +56,12 @@ def slide4_sweep():
             ax.annotate(f"{m:.1f}", (xi, m + sd), xytext=(0, 2), textcoords="offset points", ha="center",
                         va="bottom", fontsize=7)
         ax.axhline(POOL_VAL, color=ORANGE, lw=1, ls="--")
-        ax.set_xticks(range(len(values)), [labels[factor][v] for v in values], fontsize=8)
+        ax.set_xticks(range(len(values)), [labels[factor][v] for v in values], fontsize=7.5)
         ax.set_title(titles[factor], fontsize=9)
         ax.set_ylim(0, 26)
     axes[0].set_ylabel("validation macro-F1 (%)")
-    fig.suptitle("Change one factor of the default GRU (frozen GloVe 200d · 128 units · last state) · 3 seeds, ±1 sd"
-                 " · blue = best per factor · dashed = step 3 embed-and-pool (20.7)", fontsize=9)
+    fig.suptitle("Change one factor of the default GRU (frozen GloVe 200d · 128 units · last state) · 3 seeds, ±1 sd\n"
+                 "blue = best per factor · dashed = step 3 embed-and-pool (20.7)", fontsize=8)
     fig.tight_layout()
     fig.savefig(FIG / "slide4_sweep.png", dpi=200)
 
@@ -150,7 +150,7 @@ def slide6_bins():
     t = pd.DataFrame(json.loads((RESULTS / "step6_bins.json").read_text()))
     panels = [("unseen_rate", "words never seen in training"), ("n_tokens", "tweet length (tokens)"),
               ("negation", "contains a negation")]
-    fig, axes = plt.subplots(1, 3, figsize=(10, 2.9), sharey=True,
+    fig, axes = plt.subplots(1, 3, figsize=(7.6, 2.9), sharey=True,
                              gridspec_kw={"width_ratios": [4, 5, 2]})
     for ax, (feat, title) in zip(axes, panels):
         d = t[t.feature == feat]
@@ -164,7 +164,7 @@ def slide6_bins():
         for xi, v in zip(x, d["P1 BoW macro_f1"] * 100):
             ax.annotate(f"{v:.1f}", (xi - 0.27, v), xytext=(0, 2), textcoords="offset points", ha="center",
                         fontsize=7, color="#52514e")
-        ax.set_xticks(x, [f"{b}\n{n:,}" for b, n in zip(d.bin, d.n)], fontsize=7.5)
+        ax.set_xticks(x, [f"{b}\n{n:,}" for b, n in zip(d.bin, d.n)], fontsize=6.5)
         ax.set_title(title, fontsize=9)
         ax.set_ylim(0, 28)
     axes[0].set_ylabel("test macro-F1 (%)")
