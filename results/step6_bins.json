@@ -7,8 +7,8 @@
   "P1 BoW acc":0.2811888236,
   "P2 pool macro_f1":0.1673783229,
   "P2 pool acc":0.1857981847,
-  "P2 RNN macro_f1":0.2071311084,
-  "P2 RNN acc":0.2140950347
+  "P2 RNN macro_f1":0.2086168298,
+  "P2 RNN acc":0.2197899982
  },
  {
   "feature":"n_tokens",
@@ -18,8 +18,8 @@
   "P1 BoW acc":0.2758658363,
   "P2 pool macro_f1":0.2046559856,
   "P2 pool acc":0.2179613242,
-  "P2 RNN macro_f1":0.2393206167,
-  "P2 RNN acc":0.2425434284
+  "P2 RNN macro_f1":0.2363731418,
+  "P2 RNN acc":0.2391565607
  },
  {
   "feature":"n_tokens",
@@ -29,8 +29,8 @@
   "P1 BoW acc":0.2851007598,
   "P2 pool macro_f1":0.2076066116,
   "P2 pool acc":0.2245622729,
-  "P2 RNN macro_f1":0.2429063812,
-  "P2 RNN acc":0.2478526594
+  "P2 RNN macro_f1":0.2457579143,
+  "P2 RNN acc":0.2502477701
  },
  {
   "feature":"n_tokens",
@@ -40,8 +40,8 @@
   "P1 BoW acc":0.275585731,
   "P2 pool macro_f1":0.2074659216,
   "P2 pool acc":0.2239968835,
-  "P2 RNN macro_f1":0.2385909959,
-  "P2 RNN acc":0.2483165452
+  "P2 RNN macro_f1":0.2409504168,
+  "P2 RNN acc":0.2477600312
  },
  {
   "feature":"n_tokens",
@@ -51,8 +51,8 @@
   "P1 BoW acc":0.2665501844,
   "P2 pool macro_f1":0.2001230882,
   "P2 pool acc":0.2411182295,
-  "P2 RNN macro_f1":0.2355259184,
-  "P2 RNN acc":0.2714036109
+  "P2 RNN macro_f1":0.2383802915,
+  "P2 RNN acc":0.2708211998
  },
  {
   "feature":"unseen_rate",
@@ -62,8 +62,8 @@
   "P1 BoW acc":0.2893010281,
   "P2 pool macro_f1":0.2068230427,
   "P2 pool acc":0.2198687813,
-  "P2 RNN macro_f1":0.2411832099,
-  "P2 RNN acc":0.2451826213
+  "P2 RNN macro_f1":0.2421725447,
+  "P2 RNN acc":0.2452342822
  },
  {
   "feature":"unseen_rate",
@@ -73,8 +73,8 @@
   "P1 BoW acc":0.2774718698,
   "P2 pool macro_f1":0.2039977982,
   "P2 pool acc":0.2348575533,
-  "P2 RNN macro_f1":0.2375902793,
-  "P2 RNN acc":0.2655015561
+  "P2 RNN macro_f1":0.2357083471,
+  "P2 RNN acc":0.2611922432
  },
  {
   "feature":"unseen_rate",
@@ -84,7 +84,7 @@
   "P1 BoW acc":0.2775326659,
   "P2 pool macro_f1":0.2069109019,
   "P2 pool acc":0.2211097913,
-  "P2 RNN macro_f1":0.2429590235,
+  "P2 RNN macro_f1":0.2438859083,
   "P2 RNN acc":0.2488545732
  },
  {
@@ -95,8 +95,8 @@
   "P1 BoW acc":0.2623978202,
   "P2 pool macro_f1":0.1977452562,
   "P2 pool acc":0.2167574932,
-  "P2 RNN macro_f1":0.2275531876,
-  "P2 RNN acc":0.238147139
+  "P2 RNN macro_f1":0.2299735731,
+  "P2 RNN acc":0.2404632153
  },
  {
   "feature":"oov_rate",
@@ -106,8 +106,8 @@
   "P1 BoW acc":0.2786846141,
   "P2 pool macro_f1":0.2044267289,
   "P2 pool acc":0.2151985006,
-  "P2 RNN macro_f1":0.2403490099,
-  "P2 RNN acc":0.2432782416
+  "P2 RNN macro_f1":0.2412064698,
+  "P2 RNN acc":0.242835236
  },
  {
   "feature":"oov_rate",
@@ -117,8 +117,8 @@
   "P1 BoW acc":0.2759835584,
   "P2 pool macro_f1":0.1943644671,
   "P2 pool acc":0.2278332355,
-  "P2 RNN macro_f1":0.2283158012,
-  "P2 RNN acc":0.2571931885
+  "P2 RNN macro_f1":0.2312465415,
+  "P2 RNN acc":0.2580739871
  },
  {
   "feature":"oov_rate",
@@ -128,8 +128,8 @@
   "P1 BoW acc":0.2834932187,
   "P2 pool macro_f1":0.2095251773,
   "P2 pool acc":0.2313375234,
-  "P2 RNN macro_f1":0.242627694,
-  "P2 RNN acc":0.256588378
+  "P2 RNN macro_f1":0.245435681,
+  "P2 RNN acc":0.2580218326
  },
  {
   "feature":"oov_rate",
@@ -139,8 +139,8 @@
   "P1 BoW acc":0.2680929095,
   "P2 pool macro_f1":0.1939255819,
   "P2 pool acc":0.2244498778,
-  "P2 RNN macro_f1":0.2216532588,
-  "P2 RNN acc":0.237408313
+  "P2 RNN macro_f1":0.2212707778,
+  "P2 RNN acc":0.2391198044
  },
  {
   "feature":"log_freq",
@@ -150,8 +150,8 @@
   "P1 BoW acc":0.25648,
   "P2 pool macro_f1":0.189237341,
   "P2 pool acc":0.21528,
-  "P2 RNN macro_f1":0.2236843076,
-  "P2 RNN acc":0.2408
+  "P2 RNN macro_f1":0.225953592,
+  "P2 RNN acc":0.24488
  },
  {
   "feature":"log_freq",
@@ -161,8 +161,8 @@
   "P1 BoW acc":0.2732,
   "P2 pool macro_f1":0.2114799807,
   "P2 pool acc":0.23056,
-  "P2 RNN macro_f1":0.2428087342,
-  "P2 RNN acc":0.25552
+  "P2 RNN macro_f1":0.2480464226,
+  "P2 RNN acc":0.26048
  },
  {
   "feature":"log_freq",
@@ -172,8 +172,8 @@
   "P1 BoW acc":0.28184,
   "P2 pool macro_f1":0.2093276236,
   "P2 pool acc":0.22392,
-  "P2 RNN macro_f1":0.244441717,
-  "P2 RNN acc":0.25384
+  "P2 RNN macro_f1":0.2421817041,
+  "P2 RNN acc":0.2488
  },
  {
   "feature":"log_freq",
@@ -183,8 +183,8 @@
   "P1 BoW acc":0.29904,
   "P2 pool macro_f1":0.205327985,
   "P2 pool acc":0.21224,
-  "P2 RNN macro_f1":0.2364211279,
-  "P2 RNN acc":0.23256
+  "P2 RNN macro_f1":0.2376110782,
+  "P2 RNN acc":0.22992
  },
  {
   "feature":"location",
@@ -194,8 +194,8 @@
   "P1 BoW acc":0.27557065,
   "P2 pool macro_f1":0.2067288026,
   "P2 pool acc":0.2315377932,
-  "P2 RNN macro_f1":0.2331101187,
-  "P2 RNN acc":0.2519548219
+  "P2 RNN macro_f1":0.236933782,
+  "P2 RNN acc":0.2520732959
  },
  {
   "feature":"location",
@@ -205,8 +205,8 @@
   "P1 BoW acc":0.279763352,
   "P2 pool macro_f1":0.1991532702,
   "P2 pool acc":0.2091741632,
-  "P2 RNN macro_f1":0.2397919552,
-  "P2 RNN acc":0.2392414296
+  "P2 RNN macro_f1":0.2392013016,
+  "P2 RNN acc":0.2398087365
  },
  {
   "feature":"n_hashtags",
@@ -216,8 +216,8 @@
   "P1 BoW acc":0.2709357863,
   "P2 pool macro_f1":0.2010030385,
   "P2 pool acc":0.2105784539,
-  "P2 RNN macro_f1":0.2346059363,
-  "P2 RNN acc":0.2380329029
+  "P2 RNN macro_f1":0.2345730014,
+  "P2 RNN acc":0.2367946223
  },
  {
   "feature":"n_hashtags",
@@ -227,8 +227,8 @@
   "P1 BoW acc":0.2841319228,
   "P2 pool macro_f1":0.1972123637,
   "P2 pool acc":0.2158058494,
-  "P2 RNN macro_f1":0.2313934335,
-  "P2 RNN acc":0.2449284381
+  "P2 RNN macro_f1":0.2314865725,
+  "P2 RNN acc":0.2433105165
  },
  {
   "feature":"n_hashtags",
@@ -238,8 +238,8 @@
   "P1 BoW acc":0.2869808113,
   "P2 pool macro_f1":0.2057282438,
   "P2 pool acc":0.2353655574,
-  "P2 RNN macro_f1":0.2396602418,
-  "P2 RNN acc":0.2578333738
+  "P2 RNN macro_f1":0.2409141684,
+  "P2 RNN acc":0.2580762691
  },
  {
   "feature":"n_hashtags",
@@ -249,8 +249,8 @@
   "P1 BoW acc":0.2886937431,
   "P2 pool macro_f1":0.217846744,
   "P2 pool acc":0.2563117453,
-  "P2 RNN macro_f1":0.2481215063,
-  "P2 RNN acc":0.2680204903
+  "P2 RNN macro_f1":0.2576966811,
+  "P2 RNN acc":0.2795462861
  },
  {
   "feature":"negation",
@@ -260,8 +260,8 @@
   "P1 BoW acc":0.2789951091,
   "P2 pool macro_f1":0.2057548405,
   "P2 pool acc":0.2211018465,
-  "P2 RNN macro_f1":0.2385173422,
-  "P2 RNN acc":0.2457716588
+  "P2 RNN macro_f1":0.2400963719,
+  "P2 RNN acc":0.2466981234
  },
  {
   "feature":"negation",
@@ -271,8 +271,8 @@
   "P1 BoW acc":0.2601059381,
   "P2 pool macro_f1":0.192216841,
   "P2 pool acc":0.2127125732,
-  "P2 RNN macro_f1":0.2278236214,
-  "P2 RNN acc":0.2444940061
+  "P2 RNN macro_f1":0.2271977355,
+  "P2 RNN acc":0.2372456091
  },
  {
   "feature":"sentiment",
@@ -282,8 +282,8 @@
   "P1 BoW acc":0.2852475496,
   "P2 pool macro_f1":0.201344562,
   "P2 pool acc":0.2699170646,
-  "P2 RNN macro_f1":0.2358266093,
-  "P2 RNN acc":0.3043478261
+  "P2 RNN macro_f1":0.2364291672,
+  "P2 RNN acc":0.3063583815
  },
  {
   "feature":"sentiment",
@@ -293,8 +293,8 @@
   "P1 BoW acc":0.2670778977,
   "P2 pool macro_f1":0.1918755984,
   "P2 pool acc":0.216146376,
-  "P2 RNN macro_f1":0.2233005338,
-  "P2 RNN acc":0.242987538
+  "P2 RNN macro_f1":0.2254063105,
+  "P2 RNN acc":0.2436543992
  },
  {
   "feature":"sentiment",
@@ -304,8 +304,8 @@
   "P1 BoW acc":0.2877701108,
   "P2 pool macro_f1":0.211039574,
   "P2 pool acc":0.2163155983,
-  "P2 RNN macro_f1":0.243978295,
-  "P2 RNN acc":0.2380152533
+  "P2 RNN macro_f1":0.2451112677,
+  "P2 RNN acc":0.2376974759
  },
  {
   "feature":"intensity",
@@ -315,8 +315,8 @@
   "P1 BoW acc":0.2793500144,
   "P2 pool macro_f1":0.2016634146,
   "P2 pool acc":0.2125970664,
-  "P2 RNN macro_f1":0.2349881312,
-  "P2 RNN acc":0.2379925223
+  "P2 RNN macro_f1":0.2364364999,
+  "P2 RNN acc":0.2387690538
  },
  {
   "feature":"intensity",
@@ -326,8 +326,8 @@
   "P1 BoW acc":0.2737360473,
   "P2 pool macro_f1":0.2072955561,
   "P2 pool acc":0.2385423506,
-  "P2 RNN macro_f1":0.2399831482,
-  "P2 RNN acc":0.2632304662
+  "P2 RNN macro_f1":0.2404285702,
+  "P2 RNN acc":0.2625738674
  },
  {
   "feature":"user_mention",
@@ -337,8 +337,8 @@
   "P1 BoW acc":0.2764310349,
   "P2 pool macro_f1":0.2027738319,
   "P2 pool acc":0.2141527926,
-  "P2 RNN macro_f1":0.2380226422,
-  "P2 RNN acc":0.2394858944
+  "P2 RNN macro_f1":0.2391051733,
+  "P2 RNN acc":0.2399821353
  },
  {
   "feature":"user_mention",
@@ -348,7 +348,7 @@
   "P1 BoW acc":0.2826647417,
   "P2 pool macro_f1":0.1919776305,
   "P2 pool acc":0.2468804785,
-  "P2 RNN macro_f1":0.2300671983,
-  "P2 RNN acc":0.2714241518
+  "P2 RNN macro_f1":0.2289455455,
+  "P2 RNN acc":0.2711147778
  }
 ]

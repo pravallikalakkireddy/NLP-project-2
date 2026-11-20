@@ -1,0 +1,44 @@
+{
+ "setting": {
+  "cell": "gru",
+  "emb": "trainable",
+  "hidden": 128,
+  "bidir": true,
+  "readout": "meanmax",
+  "word_drop": 0.25,
+  "lr": 0.001
+ },
+ "role": "trainable",
+ "system": "gru-trainable-h128-bi-meanmax-wd0.25-lr0.001",
+ "cv_macro_f1_mean": 0.2126186354504337,
+ "cv_macro_f1_std": 0.004246639556791829,
+ "test_single_macro_f1_mean": 0.21079245348810124,
+ "test_single_macro_f1_std": 0.007599783966878337,
+ "test_single_accuracy_mean": 0.22110266666666664,
+ "test_ensemble": {
+  "macro_f1": 0.22806754805659835,
+  "accuracy": 0.23688
+ },
+ "per_class_f1_ensemble": {
+  "red_heart": 0.077,
+  "heart_eyes": 0.204,
+  "joy_tears": 0.374,
+  "two_hearts": 0.156,
+  "fire": 0.467,
+  "smiling": 0.092,
+  "sunglasses": 0.136,
+  "sparkles": 0.274,
+  "blue_heart": 0.116,
+  "kiss": 0.14,
+  "camera": 0.347,
+  "US_flag": 0.48,
+  "sun": 0.341,
+  "purple_heart": 0.087,
+  "wink": 0.111,
+  "hundred": 0.188,
+  "grin": 0.078,
+  "xmas_tree": 0.613,
+  "camera_flash": 0.199,
+  "wink_tongue": 0.082
+ }
+}

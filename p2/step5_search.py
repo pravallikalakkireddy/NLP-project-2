@@ -124,10 +124,22 @@ def cv_candidates():
     return {"best": best, twin: {**best, "emb": twin}}
 
 
-def run_cv(data, vocab, seqs, emb, seeds=(0, 1, 2), k=5):
+def add_row(path, row):
+    """Append one result under a file lock, so several `cv --seeds` processes can run in parallel."""
+    import fcntl
+    with open(path.with_suffix(".lock"), "w") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        rows = [r for r in load_rows(path) if (r["seed"], r["fold"]) != (row["seed"], row["fold"])] + [row]
+        path.write_text(json.dumps(rows, indent=1))
+    return rows
+
+
+def run_cv(data, vocab, seqs, emb, seeds=(0, 1, 2), k=5, roles=None):
     from p2.step3_pool import tweet_stats
     y, y_test = data["train"][1], data["test"][1]
     for role, s in cv_candidates().items():
+        if roles and role not in roles:
+            continue
         name = setting_name(s)
         out = RESULTS / "step5_cv" / name
         (out / "test_probs").mkdir(parents=True, exist_ok=True)
@@ -142,13 +154,17 @@ def run_cv(data, vocab, seqs, emb, seeds=(0, 1, 2), k=5):
                 tr = np.concatenate([folds[j] for j in range(k) if j != f])
                 clf = RNNClassifier(vocab, s, seed).fit([seqs["train"][i] for i in tr], y[tr])
                 m = metrics(y[folds[f]], clf.predict_proba([seqs["train"][i] for i in folds[f]]).argmax(1))
-                rows.append({"encoder": "glove200-" + name.split("-", 2)[2], "model": s["cell"], "system": name,
-                             "role": role, "seed": seed, "fold": f, **m, "best_epoch": clf.best_epoch})
                 np.save(prob_path, clf.predict_proba(seqs["test"]).astype(np.float16))
-                (out / "cv_results.json").write_text(json.dumps(rows, indent=1))
+                rows = add_row(out / "cv_results.json",
+                               {"encoder": "glove200-" + name.split("-", 2)[2], "model": s["cell"], "system": name,
+                                "role": role, "seed": seed, "fold": f, **m, "best_epoch": clf.best_epoch})
                 print(f"  seed {seed} fold {f}: CV macro-F1 {m['macro_f1']:.4f}  acc {m['accuracy']:.4f}"
                       f"  epoch {clf.best_epoch}", flush=True)
 
+        rows = load_rows(out / "cv_results.json")
+        if len(rows) < len(seeds) * k or len(seeds) < 3:
+            print(f"  {len(rows)} of 15 CV models done; summary is written when all are in", flush=True)
+            continue
         probs = [np.load(out / "test_probs" / f"s{r['seed']}_f{r['fold']}.npy").astype(np.float32)
                  for r in sorted(rows, key=lambda r: (r["seed"], r["fold"]))]
         single = [metrics(y_test, p.argmax(1)) for p in probs]
@@ -266,17 +282,20 @@ def run_compare():
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("phase", choices=["search", "cv", "compare"])
+    ap.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2], help="cv: run only these seeds (parallel runs)")
+    ap.add_argument("--roles", nargs="+", help="cv: run only these systems (best / frozen / trainable)")
+    ap.add_argument("--threads", type=int, default=8)
     args = ap.parse_args()
     FIG.mkdir(parents=True, exist_ok=True)
     if args.phase == "compare":
         return run_compare()
     import torch
-    torch.set_num_threads(8)
+    torch.set_num_threads(args.threads)
     data, emb, vocab, seqs = prepare()
     if args.phase == "search":
         run_search(data, vocab, seqs)
     else:
-        run_cv(data, vocab, seqs, emb)
+        run_cv(data, vocab, seqs, emb, seeds=tuple(args.seeds), roles=args.roles)
 
 
 if __name__ == "__main__":
