@@ -6,3 +6,4 @@ p2/make_slides.py
 slides/*.pptx
 logs/
 results/step5_cv/*/test_probs/
+results/step5_cv/*/*.lock

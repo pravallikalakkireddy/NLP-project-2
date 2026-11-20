@@ -18,7 +18,7 @@ This README documents all six steps: what we did, the results, and the answers t
 | 5 Hyperparameter search, seeds, variance, Bayesian ROPE | Ana | ✅ done |
 | 6 Error analysis | Ana | ✅ done |
 | Slides 1–3 | Pravallika | ✅ `slides/project2_slides_1-3.pdf` |
-| Slides 4–6, merge into one PDF | together | ⏳ to do |
+| Slides 4–6, merge into one PDF | Ana | ✅ `slides/project2_slides.pdf` (all 6 slides) |
 
 **Deadline:** 27 Nov, 23:59. Slides PDF (max 6 slides, backup slides for the oral) + link to a public repo.
 
