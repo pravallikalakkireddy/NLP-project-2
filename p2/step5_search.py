@@ -178,6 +178,9 @@ def run_cv(data, vocab, seqs, emb, seeds=(0, 1, 2), k=5, roles=None):
                    "test_single_macro_f1_std": float(np.std([m["macro_f1"] for m in single], ddof=1)),
                    "test_single_accuracy_mean": float(np.mean([m["accuracy"] for m in single])),
                    "test_ensemble": metrics(y_test, ens.argmax(1)),
+                   # majority vote of the 15 models, as in Project 1 and step 3 (test_ensemble_vote there)
+                   "test_ensemble_vote": metrics(y_test, np.array([np.bincount(c, minlength=20).argmax()
+                                                                    for c in np.stack([p.argmax(1) for p in probs]).T])),
                    "per_class_f1_ensemble": dict(zip(NAMES, np.round(
                        f1_score(y_test, ens.argmax(1), average=None), 3).tolist()))}
         (out / "test_summary.json").write_text(json.dumps(summary, indent=1))

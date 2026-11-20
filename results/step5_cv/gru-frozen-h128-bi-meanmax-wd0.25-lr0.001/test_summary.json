@@ -19,6 +19,10 @@
   "macro_f1": 0.2400402216397901,
   "accuracy": 0.24598
  },
+ "test_ensemble_vote": {
+  "macro_f1": 0.2385443082380215,
+  "accuracy": 0.2456
+ },
  "per_class_f1_ensemble": {
   "red_heart": 0.074,
   "heart_eyes": 0.195,
