@@ -1,0 +1,167 @@
+[
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-meanmax-wd0.0-lr0.001",
+  "role": "best",
+  "seed": 0,
+  "fold": 0,
+  "macro_f1": 0.22280091900678983,
+  "accuracy": 0.22611111111111112,
+  "best_epoch": 7
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-meanmax-wd0.0-lr0.001",
+  "role": "best",
+  "seed": 0,
+  "fold": 1,
+  "macro_f1": 0.2185757029439995,
+  "accuracy": 0.22022222222222224,
+  "best_epoch": 5
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-meanmax-wd0.0-lr0.001",
+  "role": "best",
+  "seed": 0,
+  "fold": 2,
+  "macro_f1": 0.2254079908465481,
+  "accuracy": 0.23033333333333333,
+  "best_epoch": 6
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-meanmax-wd0.0-lr0.001",
+  "role": "best",
+  "seed": 0,
+  "fold": 3,
+  "macro_f1": 0.2101501040237416,
+  "accuracy": 0.20944444444444443,
+  "best_epoch": 5
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-meanmax-wd0.0-lr0.001",
+  "role": "best",
+  "seed": 0,
+  "fold": 4,
+  "macro_f1": 0.2198398944194766,
+  "accuracy": 0.22533333333333333,
+  "best_epoch": 9
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-meanmax-wd0.0-lr0.001",
+  "role": "best",
+  "seed": 1,
+  "fold": 0,
+  "macro_f1": 0.2215122127954062,
+  "accuracy": 0.22166666666666668,
+  "best_epoch": 8
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-meanmax-wd0.0-lr0.001",
+  "role": "best",
+  "seed": 1,
+  "fold": 1,
+  "macro_f1": 0.21930114909347176,
+  "accuracy": 0.21711111111111112,
+  "best_epoch": 8
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-meanmax-wd0.0-lr0.001",
+  "role": "best",
+  "seed": 1,
+  "fold": 2,
+  "macro_f1": 0.21819943013022094,
+  "accuracy": 0.2351111111111111,
+  "best_epoch": 7
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-meanmax-wd0.0-lr0.001",
+  "role": "best",
+  "seed": 1,
+  "fold": 3,
+  "macro_f1": 0.22741945691416482,
+  "accuracy": 0.24844444444444444,
+  "best_epoch": 7
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-meanmax-wd0.0-lr0.001",
+  "role": "best",
+  "seed": 1,
+  "fold": 4,
+  "macro_f1": 0.21942211000169767,
+  "accuracy": 0.23877777777777778,
+  "best_epoch": 7
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-meanmax-wd0.0-lr0.001",
+  "role": "best",
+  "seed": 2,
+  "fold": 0,
+  "macro_f1": 0.220649570285785,
+  "accuracy": 0.215,
+  "best_epoch": 5
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-meanmax-wd0.0-lr0.001",
+  "role": "best",
+  "seed": 2,
+  "fold": 1,
+  "macro_f1": 0.21669727718948914,
+  "accuracy": 0.21422222222222223,
+  "best_epoch": 11
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-meanmax-wd0.0-lr0.001",
+  "role": "best",
+  "seed": 2,
+  "fold": 2,
+  "macro_f1": 0.2183177954927523,
+  "accuracy": 0.22077777777777777,
+  "best_epoch": 5
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-meanmax-wd0.0-lr0.001",
+  "role": "best",
+  "seed": 2,
+  "fold": 3,
+  "macro_f1": 0.22564522259743933,
+  "accuracy": 0.22133333333333333,
+  "best_epoch": 12
+ },
+ {
+  "encoder": "glove200-h128-meanmax-wd0.0-lr0.001",
+  "model": "gru",
+  "system": "gru-frozen-h128-meanmax-wd0.0-lr0.001",
+  "role": "best",
+  "seed": 2,
+  "fold": 4,
+  "macro_f1": 0.21666993049258076,
+  "accuracy": 0.222,
+  "best_epoch": 6
+ }
+]

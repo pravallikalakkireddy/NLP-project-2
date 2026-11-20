@@ -1,0 +1,462 @@
+{
+ "per_class_f1": {
+  "P1 BoW": {
+   "red_heart": 0.403,
+   "heart_eyes": 0.213,
+   "joy_tears": 0.334,
+   "two_hearts": 0.071,
+   "fire": 0.383,
+   "smiling": 0.065,
+   "sunglasses": 0.11,
+   "sparkles": 0.178,
+   "blue_heart": 0.052,
+   "kiss": 0.053,
+   "camera": 0.319,
+   "US_flag": 0.381,
+   "sun": 0.28,
+   "purple_heart": 0.03,
+   "wink": 0.058,
+   "hundred": 0.081,
+   "grin": 0.045,
+   "xmas_tree": 0.57,
+   "camera_flash": 0.246,
+   "wink_tongue": 0.025
+  },
+  "P2 pool": {
+   "red_heart": 0.127,
+   "heart_eyes": 0.165,
+   "joy_tears": 0.335,
+   "two_hearts": 0.164,
+   "fire": 0.419,
+   "smiling": 0.079,
+   "sunglasses": 0.098,
+   "sparkles": 0.228,
+   "blue_heart": 0.096,
+   "kiss": 0.121,
+   "camera": 0.264,
+   "US_flag": 0.38,
+   "sun": 0.295,
+   "purple_heart": 0.055,
+   "wink": 0.103,
+   "hundred": 0.16,
+   "grin": 0.071,
+   "xmas_tree": 0.595,
+   "camera_flash": 0.293,
+   "wink_tongue": 0.07
+  },
+  "P2 RNN": {
+   "red_heart": 0.082,
+   "heart_eyes": 0.196,
+   "joy_tears": 0.392,
+   "two_hearts": 0.174,
+   "fire": 0.483,
+   "smiling": 0.1,
+   "sunglasses": 0.133,
+   "sparkles": 0.281,
+   "blue_heart": 0.126,
+   "kiss": 0.14,
+   "camera": 0.355,
+   "US_flag": 0.499,
+   "sun": 0.342,
+   "purple_heart": 0.077,
+   "wink": 0.116,
+   "hundred": 0.21,
+   "grin": 0.09,
+   "xmas_tree": 0.635,
+   "camera_flash": 0.265,
+   "wink_tongue": 0.077
+  },
+  "RNN - pool": {
+   "red_heart": -0.044,
+   "heart_eyes": 0.031,
+   "joy_tears": 0.058,
+   "two_hearts": 0.01,
+   "fire": 0.064,
+   "smiling": 0.021,
+   "sunglasses": 0.035,
+   "sparkles": 0.054,
+   "blue_heart": 0.03,
+   "kiss": 0.019,
+   "camera": 0.091,
+   "US_flag": 0.119,
+   "sun": 0.047,
+   "purple_heart": 0.022,
+   "wink": 0.012,
+   "hundred": 0.05,
+   "grin": 0.02,
+   "xmas_tree": 0.04,
+   "camera_flash": -0.029,
+   "wink_tongue": 0.007
+  }
+ },
+ "top_confusions_rnn": [
+  {
+   "true": "camera_flash",
+   "pred": "camera",
+   "share": 0.49
+  },
+  {
+   "true": "camera",
+   "pred": "camera_flash",
+   "share": 0.185
+  },
+  {
+   "true": "wink_tongue",
+   "pred": "wink",
+   "share": 0.16
+  },
+  {
+   "true": "two_hearts",
+   "pred": "kiss",
+   "share": 0.152
+  },
+  {
+   "true": "wink_tongue",
+   "pred": "joy_tears",
+   "share": 0.133
+  },
+  {
+   "true": "red_heart",
+   "pred": "kiss",
+   "share": 0.132
+  },
+  {
+   "true": "hundred",
+   "pred": "fire",
+   "share": 0.123
+  },
+  {
+   "true": "purple_heart",
+   "pred": "kiss",
+   "share": 0.122
+  }
+ ],
+ "confident_mistakes_rnn": [
+  {
+   "text": "Happy Veterans Day to our Marines #Bellamybreakfast #2017 @ Bellamy…",
+   "true": "❤",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "🇺🇸",
+   "rnn_conf": 0.995
+  },
+  {
+   "text": "Tourista #USA @ United States Capitol",
+   "true": "📸",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "🇺🇸",
+   "rnn_conf": 0.99
+  },
+  {
+   "text": "USA has freedom of speech alright @ San Francisco, California",
+   "true": "😂",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "🇺🇸",
+   "rnn_conf": 0.984
+  },
+  {
+   "text": "#houston #texas #happy4th #independenceday #4thofjuly @ Houston, Texas",
+   "true": "😂",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "🇺🇸",
+   "rnn_conf": 0.974
+  },
+  {
+   "text": "Rocking Around The Christmas Tree! #Glitterville #Christmas @ Los Angeles,…",
+   "true": "✨",
+   "rnn": "🎄",
+   "pool": "🎄",
+   "bow": "🎄",
+   "rnn_conf": 0.968
+  },
+  {
+   "text": "Jimi Hendrix and family. To all military . We salute you @ Wrightwood, California",
+   "true": "❤",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "❤",
+   "rnn_conf": 0.965
+  },
+  {
+   "text": "Building the future of America now! #rustospace @ Miami Design District",
+   "true": "😂",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "🇺🇸",
+   "rnn_conf": 0.964
+  },
+  {
+   "text": "It’s beginning to feel a lot like #Christmas #nyc #christmastree #holiday #lights…",
+   "true": "❤",
+   "rnn": "🎄",
+   "pool": "🎄",
+   "bow": "🎄",
+   "rnn_conf": 0.959
+  },
+  {
+   "text": "INDEPENDENCE We made it safely to New Orleans ready to celebrate 4th July. No better place…",
+   "true": "✨",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "❤",
+   "rnn_conf": 0.958
+  },
+  {
+   "text": "Let the Christmas Season Begin @ Perham, Minnesota",
+   "true": "❤",
+   "rnn": "🎄",
+   "pool": "🎄",
+   "bow": "🎄",
+   "rnn_conf": 0.955
+  },
+  {
+   "text": "LIT AF #trapseries Ed. 4 #getupoutmytraphouse #traphouse #trapwonderland #traphouseatl…",
+   "true": "✨",
+   "rnn": "🔥",
+   "pool": "🔥",
+   "bow": "🔥",
+   "rnn_conf": 0.955
+  },
+  {
+   "text": "#crackerbarreloldcountrystore #Maryland #baltimore #usa @ Cracker Barrel Old Country Store",
+   "true": "😍",
+   "rnn": "🇺🇸",
+   "pool": "🇺🇸",
+   "bow": "🇺🇸",
+   "rnn_conf": 0.954
+  },
+  {
+   "text": "It’s looking like Christmas time at the Thomas Professionals Bldg. …",
+   "true": "😁",
+   "rnn": "🎄",
+   "pool": "🎄",
+   "bow": "🎄",
+   "rnn_conf": 0.952
+  },
+  {
+   "text": "The best gifts are always under the Christmas tree @ Campus Martius Park",
+   "true": "😉",
+   "rnn": "🎄",
+   "pool": "🎄",
+   "bow": "🎄",
+   "rnn_conf": 0.952
+  },
+  {
+   "text": "Mostly sunny and sunny @ New Jersey",
+   "true": "😂",
+   "rnn": "☀",
+   "pool": "☀",
+   "bow": "❤",
+   "rnn_conf": 0.95
+  }
+ ],
+ "disagreement": {
+  "rnn_right_pool_wrong": 4058,
+  "pool_right_rnn_wrong": 2799,
+  "feature_means": {
+   "rnn_only": {
+    "n_tokens": 15.995,
+    "unseen_rate": 0.073,
+    "oov_rate": 0.043,
+    "log_freq": 4.857,
+    "location": 0.509,
+    "n_hashtags": 1.125,
+    "negation": 0.077,
+    "sentiment": 0.031,
+    "intensity": 0.309,
+    "user_mention": 0.22
+   },
+   "pool_only": {
+    "n_tokens": 16.098,
+    "unseen_rate": 0.077,
+    "oov_rate": 0.049,
+    "log_freq": 4.872,
+    "location": 0.473,
+    "n_hashtags": 1.276,
+    "negation": 0.071,
+    "sentiment": 0.035,
+    "intensity": 0.313,
+    "user_mention": 0.234
+   },
+   "all": {
+    "n_tokens": 15.724,
+    "unseen_rate": 0.073,
+    "oov_rate": 0.043,
+    "log_freq": 4.897,
+    "location": 0.494,
+    "n_hashtags": 1.125,
+    "negation": 0.072,
+    "sentiment": 0.034,
+    "intensity": 0.305,
+    "user_mention": 0.194
+   }
+  }
+ },
+ "examples_rnn_right_pool_wrong": [
+  {
+   "text": "When your Empress Kitty sleeps better than you. @ Asheville, North Carolina",
+   "true": "😘",
+   "rnn": "😘",
+   "pool": "💕",
+   "bow": "😂",
+   "rnn_conf": 0.172
+  },
+  {
+   "text": "Perfect example of us - best friends from the womb. @ Royal Oak, Michigan",
+   "true": "💕",
+   "rnn": "💕",
+   "pool": "💙",
+   "bow": "❤",
+   "rnn_conf": 0.183
+  },
+  {
+   "text": "Life is simple, go mudding and listen to country music @ Hialeah…",
+   "true": "🇺🇸",
+   "rnn": "🇺🇸",
+   "pool": "💯",
+   "bow": "❤",
+   "rnn_conf": 0.219
+  },
+  {
+   "text": "Lol..... Forgive me social media @ Atlanta, Georgia",
+   "true": "😂",
+   "rnn": "😂",
+   "pool": "💯",
+   "bow": "❤",
+   "rnn_conf": 0.506
+  },
+  {
+   "text": "#gorgeous #shot of @user @user for @user Have…",
+   "true": "📷",
+   "rnn": "📷",
+   "pool": "📸",
+   "bow": "❤",
+   "rnn_conf": 0.349
+  },
+  {
+   "text": "A family that magics together slays together .... #hogsmead #hogwarts #gryffindor #ravenclaw…",
+   "true": "✨",
+   "rnn": "✨",
+   "pool": "💯",
+   "bow": "❤",
+   "rnn_conf": 0.201
+  },
+  {
+   "text": "... more communing with the team ... talking about vpc's and the necessity of ice #dreamjob @user ...",
+   "true": "😂",
+   "rnn": "😂",
+   "pool": "😉",
+   "bow": "😂",
+   "rnn_conf": 0.203
+  },
+  {
+   "text": "\"A brand new little baby boy to fill our hearts &amp; lives with Joy\" Welcome baby Liam congrats…",
+   "true": "💙",
+   "rnn": "💙",
+   "pool": "💜",
+   "bow": "❤",
+   "rnn_conf": 0.25
+  },
+  {
+   "text": "Love this! #Repost irvingsmarket ・・・There's still time to drop off a gift for our donation…",
+   "true": "❤",
+   "rnn": "❤",
+   "pool": "✨",
+   "bow": "❤",
+   "rnn_conf": 0.134
+  },
+  {
+   "text": "There is always a new corner or a park in a traffic circle to visit #dupontcircle…",
+   "true": "😉",
+   "rnn": "😉",
+   "pool": "☀",
+   "bow": "❤",
+   "rnn_conf": 0.167
+  }
+ ],
+ "examples_pool_right_rnn_wrong": [
+  {
+   "text": "Now that I made it, ain't none the same it all changedPhotographer : @user Sponsors:…",
+   "true": "📸",
+   "rnn": "📷",
+   "pool": "📸",
+   "bow": "📷",
+   "rnn_conf": 0.54
+  },
+  {
+   "text": "they hate U.S. 'cause they ain't U.S. @ United States",
+   "true": "🇺🇸",
+   "rnn": "💯",
+   "pool": "🇺🇸",
+   "bow": "🇺🇸",
+   "rnn_conf": 0.235
+  },
+  {
+   "text": "Toronto sunset views #Toronto #highrise #balconyviews #exploreontario #sky #sunset #pretty…",
+   "true": "😍",
+   "rnn": "🔥",
+   "pool": "😍",
+   "bow": "😍",
+   "rnn_conf": 0.241
+  },
+  {
+   "text": "Lime+Jalapeño+Lobster . We're out on the corner of Commercial and Pearl until 3 @ The…",
+   "true": "🔥",
+   "rnn": "😉",
+   "pool": "🔥",
+   "bow": "🔥",
+   "rnn_conf": 0.161
+  },
+  {
+   "text": "Nothing is holding us back! But we never want to let go of our #invincibleclutch that holds us…",
+   "true": "😉",
+   "rnn": "✨",
+   "pool": "😉",
+   "bow": "❤",
+   "rnn_conf": 0.123
+  },
+  {
+   "text": "The uglier the color of the drink, the better it will taste, right? : The sweet girl who made…",
+   "true": "📷",
+   "rnn": "😉",
+   "pool": "📷",
+   "bow": "📸",
+   "rnn_conf": 0.196
+  },
+  {
+   "text": "Love!! #halocoutureextensions @ Paradise Styles Salon, Tanning &amp; Nails",
+   "true": "😍",
+   "rnn": "💜",
+   "pool": "😍",
+   "bow": "😍",
+   "rnn_conf": 0.203
+  },
+  {
+   "text": "Sorry if you're star struck, blame it on the star dust // : solasanamphothography for…",
+   "true": "📸",
+   "rnn": "📷",
+   "pool": "📸",
+   "bow": "📷",
+   "rnn_conf": 0.519
+  },
+  {
+   "text": "One more from sdaviesnbc5 engagement shoot!! One of my favorites of one of my favorite…",
+   "true": "❤",
+   "rnn": "💕",
+   "pool": "❤",
+   "bow": "❤",
+   "rnn_conf": 0.131
+  },
+  {
+   "text": "W E L C X M E | @user | : @user @ Cam Kirk Studios",
+   "true": "📸",
+   "rnn": "📷",
+   "pool": "📸",
+   "bow": "📸",
+   "rnn_conf": 0.518
+  }
+ ]
+}

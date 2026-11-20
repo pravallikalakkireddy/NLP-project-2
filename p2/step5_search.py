@@ -5,9 +5,9 @@ How the search is structured (coarse to fine):
   1. step 3 / step 4 sweeps: one factor at a time from a default, 3 seeds each, on the validation set.
      Cheap, shows the main effect of every factor, but never tests combinations.
   2. search (this file): random search over COMBINATIONS of the values that were competitive in step 4
-     (within 1 point of the best value of their factor), 12 settings x 3 seeds, on the validation set.
+     (within 1 point of the best value of their factor), 6 settings x 3 seeds, on the validation set.
                                                                          -> results/step5_search.json
-  3. cv (this file): the best RNN setting and its frozen / trainable / random counterparts, with Project 1's
+  3. cv (this file): the best RNN setting and its frozen <-> trainable counterpart, with Project 1's
      protocol (5 folds x seeds 0,1,2 on `train`). Every fold model also predicts the 50k test tweets.
                                                                          -> results/step5_cv/<setting>/
   4. compare (this file): Bayesian correlated t-test with a ROPE (Benavoli et al., course part1/analysis.py)
@@ -37,7 +37,7 @@ from p2.step4_rnn import (DEFAULT, SWEEP, RNNClassifier, best_sweep_setting, loa
 FIG = RESULTS / "figures"
 ROPE = 0.01                     # 1 macro-F1 point, as in Project 1
 
-N_SEARCH = 12
+N_SEARCH = 6
 KEEP_WITHIN = 0.01              # a value stays in the search if it is within 1 point of its factor's best
 
 # ------------------------------------------------------------------------------------------
@@ -50,9 +50,10 @@ def search_space():
     within KEEP_WITHIN of that factor's best value (differences smaller than that are seed noise).
     """
     df = pd.DataFrame(load_rows(RESULTS / "step4_sweep.json"))
+    default_runs = df.name == setting_name(DEFAULT)          # the default is stored once, under the first factor
     space = {}
     for factor, values in SWEEP.items():
-        means = {v: df[(df.tag == factor) & (df[factor] == v)].macro_f1.mean() for v in values}
+        means = {v: df[(default_runs | (df.tag == factor)) & (df[factor] == v)].macro_f1.mean() for v in values}
         top = max(means.values())
         space[factor] = [v for v in values if means[v] >= top - KEEP_WITHIN]
     return space
@@ -66,7 +67,7 @@ def search_settings(n=N_SEARCH, seed=0):
     out, tries = [], 0
     while len(out) < n and tries < 10_000:
         tries += 1
-        s = {k: v[rng.integers(len(v))] for k, v in space.items()}
+        s = {**DEFAULT, **{k: v[rng.integers(len(v))] for k, v in space.items()}}
         s = {k: (bool(v) if k == "bidir" else v.item() if hasattr(v, "item") else v) for k, v in s.items()}
         if setting_name(s) not in seen:
             seen.add(setting_name(s))
@@ -118,8 +119,9 @@ def run_search(data, vocab, seqs, seeds=(0, 1, 2)):
 
 def cv_candidates():
     best = best_rnn_setting()
-    other = {m: {**best, "emb": m} for m in ("frozen", "trainable", "random") if m != best["emb"]}
-    return {"best": best, **other}
+    # the twin with the other embedding setting (random embeddings are covered by step 4's data-size runs)
+    twin = "trainable" if best["emb"] == "frozen" else "frozen"
+    return {"best": best, twin: {**best, "emb": twin}}
 
 
 def run_cv(data, vocab, seqs, emb, seeds=(0, 1, 2), k=5):

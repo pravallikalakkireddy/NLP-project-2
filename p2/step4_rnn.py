@@ -8,9 +8,9 @@ Only the encoder changes compared with step 3: same tokeniser, same embeddings, 
 
 Phases:
   sweep    : train on `train`, score on `validation`, 3 seeds per setting. One factor at a time is changed
-             from DEFAULT: cell, embeddings, hidden size, direction, readout, word dropout, learning rate.
+             from DEFAULT: cell, embeddings (frozen / trainable / random), direction, readout, word dropout.
                                                                         -> results/step4_sweep.json
-  datasize : 10% / 25% / 50% / 100% of the training tweets, for frozen / trainable / random embeddings
+  datasize : 10% / 30% / 100% of the training tweets, for frozen / trainable / random embeddings
              and for the step 3 embed-and-pool model, 3 seeds each, scored on validation.
                                                                         -> results/step4_datasize.json
 
@@ -39,12 +39,12 @@ DEFAULT = {"cell": "gru", "emb": "frozen", "hidden": 128, "bidir": False, "reado
 SWEEP = {
     "cell": ["gru", "lstm"],
     "emb": ["frozen", "trainable", "random"],      # random = same vocabulary, no pretraining, trained end to end
-    "hidden": [64, 128, 256],
     "bidir": [False, True],
     "readout": ["last", "max", "meanmax"],         # last hidden state, or max / mean+max over all time steps
-    "word_drop": [0.0, 0.1, 0.25],                 # zero out whole word vectors while training (course LSTMEncoder)
-    "lr": [3e-4, 1e-3, 3e-3],
+    "word_drop": [0.0, 0.25],                      # zero out whole word vectors while training (course LSTMEncoder)
 }
+# hidden size (128) and learning rate (Adam 1e-3) stay fixed: step 3 already showed the learning-rate effect,
+# and we spend the compute on the questions the project asks about recurrent encoders.
 
 # ------------------------------------------------------------------------------------------
 # Vocabulary: every GloVe word that occurs in any split. Row 0 = padding, row 1 = unknown word.
@@ -246,13 +246,21 @@ def run_sweep(data, vocab, seqs, seeds=(0, 1, 2)):
     print("best:", best_sweep_setting())
 
 
-def run_datasize(data, vocab, seqs, emb, seeds=(0, 1, 2), fracs=(0.1, 0.25, 0.5, 1.0)):
+def run_datasize(data, vocab, seqs, emb, seeds=(0, 1, 2), fracs=(0.1, 0.3, 1.0)):
     from p2.step3_pool import PooledClassifier, pool_texts
     path = RESULTS / "step4_datasize.json"
     best = best_sweep_setting()
     jobs = [("datasize", {**best, "emb": mode}, seed, frac)
             for frac in fracs for mode in ("frozen", "trainable", "random") for seed in seeds]
-    rows = run_settings(load_rows(path), path, jobs, data, vocab, seqs)
+    rows = load_rows(path)
+    # full-data runs that the sweep already did (same setting, same seed) are reused, not retrained
+    have = {(r["name"], r["seed"], r["frac"]) for r in rows if r["tag"] == "datasize"}
+    for r in load_rows(RESULTS / "step4_sweep.json"):
+        if (r["name"], r["seed"], 1.0) not in have and any(setting_name(s) == r["name"] and seed == r["seed"]
+                                                          and frac == 1.0 for _, s, seed, frac in jobs):
+            rows.append({**r, "tag": "datasize"})
+            have.add((r["name"], r["seed"], 1.0))
+    rows = run_settings(rows, path, jobs, data, vocab, seqs)
 
     # the step 3 model (frozen GloVe, mean+max pooling, MLP) on the same subsets, for reference
     done = {(r["seed"], r["frac"]) for r in rows if r["tag"] == "pool"}
